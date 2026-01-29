@@ -1,0 +1,231 @@
+import { SchedulerProps } from '../types';
+export declare const defaultProps: (props: Partial<SchedulerProps>) => {
+    height: number;
+    alwaysShowAgendaDays?: boolean | undefined;
+    month: import('../types').MonthProps | null;
+    week: import('../types').WeekProps | null;
+    day: import('../types').DayProps | null;
+    navigation: boolean;
+    disableViewNavigator: boolean;
+    navigationPickerProps?: Partial<Omit<import('@mui/x-date-pickers').DateCalendarProps<Date>, "open" | "onClose" | "openTo" | "views" | "value" | "readOnly" | "onChange">> | undefined;
+    events: import('../types').ProcessedEvent[];
+    eventRenderer?: ((props: import('../types').EventRendererProps) => React.ReactNode | null) | undefined;
+    getRemoteEvents?: ((params: import('../types').RemoteQuery) => Promise<import('../types').ProcessedEvent[] | void>) | undefined;
+    fields: import('../types').FieldProps[];
+    loading: boolean;
+    loadingComponent?: import('react').ReactNode;
+    onConfirm: ((event: import('../types').ProcessedEvent, action: import('../types').EventActions) => Promise<import('../types').ProcessedEvent>) | undefined;
+    onDelete: ((deletedId: string | number) => Promise<string | number | void>) | undefined;
+    customEditor: ((scheduler: import('../types').SchedulerHelpers) => React.ReactNode) | undefined;
+    customViewer?: ((event: import('../types').ProcessedEvent, close: () => void) => React.ReactNode) | undefined;
+    viewerExtraComponent: string | number | bigint | boolean | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<import('react').ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<import('react').ReactNode> | null | undefined> | ((fields: import('../types').FieldProps[], event: import('../types').ProcessedEvent) => React.ReactNode) | null | undefined;
+    viewerTitleComponent?: ((event: import('../types').ProcessedEvent) => React.ReactNode) | undefined;
+    viewerSubtitleComponent?: ((event: import('../types').ProcessedEvent) => React.ReactNode) | undefined;
+    disableViewer?: boolean | undefined;
+    resources: import('../types').DefaultResource[];
+    resourceHeaderComponent: ((resource: import('../types').DefaultResource) => React.ReactNode) | undefined;
+    onResourceChange?: ((resource: import('../types').DefaultResource) => void) | undefined;
+    locale: import('date-fns').Locale;
+    timeZone?: string | undefined;
+    onEventDrop?: ((event: import('react').DragEvent<HTMLButtonElement>, droppedOn: Date, updatedEvent: import('../types').ProcessedEvent, originalEvent: import('../types').ProcessedEvent) => Promise<import('../types').ProcessedEvent | void>) | undefined;
+    onEventClick?: ((event: import('../types').ProcessedEvent) => void) | undefined;
+    onEventEdit?: ((event: import('../types').ProcessedEvent) => void) | undefined;
+    deletable: boolean;
+    editable: boolean;
+    draggable: boolean;
+    onSelectedDateChange?: ((date: Date) => void) | undefined;
+    onViewChange?: ((view: import('../components/nav/Navigation').View, agenda?: boolean) => void) | undefined;
+    stickyNavigation?: boolean | undefined;
+    onClickMore?: ((date: Date, gotToDay: (date: Date) => void) => void) | undefined;
+    onCellClick?: ((start: Date, end: Date, resourceKey?: string, resourceVal?: string | number) => void) | undefined;
+    translations: {
+        moreEvents: string;
+        loading: string;
+        noDataToDisplay: string;
+        validation?: {
+            required?: string;
+            invalidEmail?: string;
+            onlyNumbers?: string;
+            min?: string | ((min: number) => string);
+            max?: string | ((max: number) => string);
+        } | undefined;
+        navigation: {
+            month: string;
+            week: string;
+            day: string;
+            agenda: string;
+            today: string;
+        } & Record<import('../components/nav/Navigation').View, string> & {
+            today: string;
+            agenda: string;
+        };
+        form: {
+            addTitle: string;
+            editTitle: string;
+            confirm: string;
+            delete: string;
+            cancel: string;
+        } & {
+            addTitle: string;
+            editTitle: string;
+            confirm: string;
+            delete: string;
+            cancel: string;
+        };
+        event: {
+            title: string;
+            start: string;
+            end: string;
+            allDay: string;
+        } & Record<string, string> & {
+            title: string;
+            subtitle: string;
+            start: string;
+            end: string;
+            allDay: string;
+        };
+    };
+    resourceFields: {
+        idField: string;
+        textField: string;
+        subTextField: string;
+        avatarField: string;
+        colorField: string;
+    } & {
+        idField: string;
+        textField: string;
+        subTextField?: string;
+        avatarField?: string;
+        colorField?: string;
+    } & Record<string, string>;
+    view: import('../components/nav/Navigation').View;
+    selectedDate: Date;
+    resourceViewMode: "default" | "vertical" | "tabs";
+    direction: "rtl" | "ltr";
+    dialogMaxWidth: import('@mui/system').Breakpoint;
+    hourFormat: "12" | "24";
+    agenda: boolean | undefined;
+    enableAgenda: boolean;
+};
+export declare const initialStore: {
+    setProps: () => void;
+    dialog: boolean;
+    selectedRange: undefined;
+    selectedEvent: undefined;
+    selectedResource: undefined;
+    handleState: () => void;
+    getViews: () => never[];
+    toggleAgenda: () => void;
+    triggerDialog: () => void;
+    triggerLoading: () => void;
+    handleGotoDay: () => void;
+    confirmEvent: () => void;
+    setCurrentDragged: () => void;
+    onDrop: () => void;
+    height: number;
+    alwaysShowAgendaDays?: boolean | undefined;
+    month: import('../types').MonthProps | null;
+    week: import('../types').WeekProps | null;
+    day: import('../types').DayProps | null;
+    navigation: boolean;
+    disableViewNavigator: boolean;
+    navigationPickerProps?: Partial<Omit<import('@mui/x-date-pickers').DateCalendarProps<Date>, "open" | "onClose" | "openTo" | "views" | "value" | "readOnly" | "onChange">> | undefined;
+    events: import('../types').ProcessedEvent[];
+    eventRenderer?: ((props: import('../types').EventRendererProps) => React.ReactNode | null) | undefined;
+    getRemoteEvents?: ((params: import('../types').RemoteQuery) => Promise<import('../types').ProcessedEvent[] | void>) | undefined;
+    fields: import('../types').FieldProps[];
+    loading: boolean;
+    loadingComponent?: import('react').ReactNode;
+    onConfirm: ((event: import('../types').ProcessedEvent, action: import('../types').EventActions) => Promise<import('../types').ProcessedEvent>) | undefined;
+    onDelete: ((deletedId: string | number) => Promise<string | number | void>) | undefined;
+    customEditor: ((scheduler: import('../types').SchedulerHelpers) => React.ReactNode) | undefined;
+    customViewer?: ((event: import('../types').ProcessedEvent, close: () => void) => React.ReactNode) | undefined;
+    viewerExtraComponent: string | number | bigint | boolean | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<import('react').ReactNode> | Promise<string | number | bigint | boolean | import('react').ReactPortal | import('react').ReactElement<unknown, string | import('react').JSXElementConstructor<any>> | Iterable<import('react').ReactNode> | null | undefined> | ((fields: import('../types').FieldProps[], event: import('../types').ProcessedEvent) => React.ReactNode) | null | undefined;
+    viewerTitleComponent?: ((event: import('../types').ProcessedEvent) => React.ReactNode) | undefined;
+    viewerSubtitleComponent?: ((event: import('../types').ProcessedEvent) => React.ReactNode) | undefined;
+    disableViewer?: boolean | undefined;
+    resources: import('../types').DefaultResource[];
+    resourceHeaderComponent: ((resource: import('../types').DefaultResource) => React.ReactNode) | undefined;
+    onResourceChange?: ((resource: import('../types').DefaultResource) => void) | undefined;
+    locale: import('date-fns').Locale;
+    timeZone?: string | undefined;
+    onEventDrop?: ((event: import('react').DragEvent<HTMLButtonElement>, droppedOn: Date, updatedEvent: import('../types').ProcessedEvent, originalEvent: import('../types').ProcessedEvent) => Promise<import('../types').ProcessedEvent | void>) | undefined;
+    onEventClick?: ((event: import('../types').ProcessedEvent) => void) | undefined;
+    onEventEdit?: ((event: import('../types').ProcessedEvent) => void) | undefined;
+    deletable: boolean;
+    editable: boolean;
+    draggable: boolean;
+    onSelectedDateChange?: ((date: Date) => void) | undefined;
+    onViewChange?: ((view: import('../components/nav/Navigation').View, agenda?: boolean) => void) | undefined;
+    stickyNavigation?: boolean | undefined;
+    onClickMore?: ((date: Date, gotToDay: (date: Date) => void) => void) | undefined;
+    onCellClick?: ((start: Date, end: Date, resourceKey?: string, resourceVal?: string | number) => void) | undefined;
+    translations: {
+        moreEvents: string;
+        loading: string;
+        noDataToDisplay: string;
+        validation?: {
+            required?: string;
+            invalidEmail?: string;
+            onlyNumbers?: string;
+            min?: string | ((min: number) => string);
+            max?: string | ((max: number) => string);
+        } | undefined;
+        navigation: {
+            month: string;
+            week: string;
+            day: string;
+            agenda: string;
+            today: string;
+        } & Record<import('../components/nav/Navigation').View, string> & {
+            today: string;
+            agenda: string;
+        };
+        form: {
+            addTitle: string;
+            editTitle: string;
+            confirm: string;
+            delete: string;
+            cancel: string;
+        } & {
+            addTitle: string;
+            editTitle: string;
+            confirm: string;
+            delete: string;
+            cancel: string;
+        };
+        event: {
+            title: string;
+            start: string;
+            end: string;
+            allDay: string;
+        } & Record<string, string> & {
+            title: string;
+            subtitle: string;
+            start: string;
+            end: string;
+            allDay: string;
+        };
+    };
+    resourceFields: {
+        idField: string;
+        textField: string;
+        subTextField: string;
+        avatarField: string;
+        colorField: string;
+    } & {
+        idField: string;
+        textField: string;
+        subTextField?: string;
+        avatarField?: string;
+        colorField?: string;
+    } & Record<string, string>;
+    view: import('../components/nav/Navigation').View;
+    selectedDate: Date;
+    resourceViewMode: "default" | "vertical" | "tabs";
+    direction: "rtl" | "ltr";
+    dialogMaxWidth: import('@mui/system').Breakpoint;
+    hourFormat: "12" | "24";
+    agenda: boolean | undefined;
+    enableAgenda: boolean;
+};

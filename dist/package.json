@@ -1,0 +1,65 @@
+{
+  "name": "@prod4dev/react-scheduler-p4d",
+  "version": "3.1.2",
+  "description": "React scheduler component based on Material-UI & date-fns",
+  "files": [
+    "*"
+  ],
+  "type": "module",
+  "exports": {
+    "./types": {
+      "import": "./dist/types.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/prod4dev/react-scheduler-p4d.git"
+  },
+  "keywords": [
+    "react",
+    "material-ui",
+    "calendar",
+    "scheduler"
+  ],
+  "author": "Aldabil",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/prod4dev/react-scheduler-p4d/issues"
+  },
+  "peerDependencies": {
+    "@mui/icons-material": ">=7.0.0",
+    "@mui/material": ">=7.0.0",
+    "@mui/x-date-pickers": ">=7.0.0 & <8.0.0",
+    "date-fns": ">=4.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "rrule": ">=2.8.1"
+  },
+  "peerDependenciesMeta": {
+    "rrule": {
+      "optional": true
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": "https://github.com/aldabil21/react-scheduler#readme"
+}
