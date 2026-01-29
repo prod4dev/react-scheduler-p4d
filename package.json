@@ -16,7 +16,7 @@
     "lint": "npm run types && eslint .",
     "lint:fix": "eslint . --fix",
     "types": "tsc --noEmit",
-    "prepare": "husky install",
+    "prepare": "husky install || true && npm run build",
     "pre:commit": "lint-staged",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -24,10 +24,10 @@
   },
   "exports": {
     "./types": {
-      "import": "./types.d.ts"
+      "import": "./dist/types.d.ts"
     },
     ".": {
-      "import": "./index.js"
+      "import": "./dist/index.js"
     }
   },
   "lint-staged": {
