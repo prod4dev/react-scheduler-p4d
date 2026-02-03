@@ -1687,7 +1687,7 @@ const or = (e) => {
                     minWidth: "auto",
                     transition: "all 0.2s ease",
                     backgroundColor: m === t ? "#fff" : "transparent",
-                    color: m === t ? "#1d4ed8" : "#6b7280",
+                    color: m === t ? "#2563eb" : "#6b7280",
                     boxShadow: m === t ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
                     "&:hover": {
                       backgroundColor: m === t ? "#fff" : "rgba(255,255,255,0.5)"

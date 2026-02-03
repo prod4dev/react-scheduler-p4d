@@ -171,7 +171,7 @@ const Navigation = () => {
                     minWidth: "auto",
                     transition: "all 0.2s ease",
                     backgroundColor: v === view ? "#fff" : "transparent",
-                    color: v === view ? "#1d4ed8" : "#6b7280",
+                    color: v === view ? "#2563eb" : "#6b7280",
                     boxShadow: v === view ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
                     "&:hover": {
                       backgroundColor: v === view ? "#fff" : "rgba(255,255,255,0.5)",
