@@ -1,24 +1,24 @@
-import { jsxs as M, jsx as r, Fragment as Z } from "react/jsx-runtime";
+import { jsxs as S, jsx as r, Fragment as Z } from "react/jsx-runtime";
 import { createContext as dt, useContext as ct, useMemo as j, useState as P, Fragment as K, useRef as Ye, useEffect as ee, useCallback as U, forwardRef as ut } from "react";
-import { isWithinInterval as oe, endOfDay as Q, startOfDay as J, format as N, isSameDay as ue, differenceInDays as ht, addSeconds as Lt, subMinutes as Vt, addMinutes as ae, differenceInMilliseconds as Bt, addDays as q, addMilliseconds as Gt, isToday as he, differenceInMinutes as ke, set as ve, isBefore as De, isAfter as ft, startOfWeek as Ee, eachMinuteOfInterval as gt, endOfMonth as pt, endOfWeek as mt, startOfMonth as Le, getMonth as jt, setMonth as Qe, getDaysInMonth as Ut, isSameMonth as yt, differenceInCalendarWeeks as Zt, closestTo as qt, setHours as Je, eachWeekOfInterval as Xt, eachDayOfInterval as Yt, isEqual as Ke } from "date-fns";
-import { useTheme as Y, ListItem as Qt, ListItemAvatar as vt, Avatar as Ve, ListItemText as _t, Typography as A, Tabs as Jt, Tab as Kt, Box as we, styled as ie, alpha as de, Paper as bt, Grow as en, IconButton as fe, Slide as tn, Button as X, Popover as _e, List as nn, ListItemButton as rn, ButtonBase as on, useMediaQuery as wt, MenuList as an, MenuItem as Oe, TextField as ln, FormControl as sn, InputLabel as dn, Select as cn, Checkbox as un, Chip as hn, CircularProgress as Dt, FormHelperText as fn, Dialog as gn, DialogTitle as pn, DialogContent as mn, Grid as et, DialogActions as yn } from "@mui/material";
+import { isWithinInterval as oe, endOfDay as Q, startOfDay as J, format as N, isSameDay as ue, differenceInDays as ht, addSeconds as Lt, subMinutes as Vt, addMinutes as ae, differenceInMilliseconds as Bt, addDays as q, addMilliseconds as Gt, isToday as he, differenceInMinutes as ke, set as ve, isBefore as xe, isAfter as ft, startOfWeek as Ee, eachMinuteOfInterval as pt, endOfMonth as gt, endOfWeek as mt, startOfMonth as Le, getMonth as jt, setMonth as Qe, getDaysInMonth as Ut, isSameMonth as yt, differenceInCalendarWeeks as Zt, closestTo as qt, setHours as Je, eachWeekOfInterval as Xt, eachDayOfInterval as Yt, isEqual as Ke } from "date-fns";
+import { useTheme as Y, ListItem as Qt, ListItemAvatar as vt, Avatar as Ve, ListItemText as _t, Typography as $, Tabs as Jt, Tab as Kt, Box as we, styled as ie, alpha as de, Paper as bt, Grow as en, IconButton as fe, Slide as tn, Button as X, Popover as _e, List as nn, ListItemButton as rn, ButtonBase as on, useMediaQuery as wt, MenuList as an, MenuItem as Oe, TextField as ln, FormControl as sn, InputLabel as dn, Select as cn, Checkbox as un, Chip as hn, CircularProgress as xt, FormHelperText as fn, Dialog as pn, DialogTitle as gn, DialogContent as mn, Grid as et, DialogActions as yn } from "@mui/material";
 import { enUS as vn } from "date-fns/locale";
 import { styled as _n } from "@mui/material/styles";
 import bn from "@mui/icons-material/DeleteRounded";
 import wn from "@mui/icons-material/EditRounded";
-import Dn from "@mui/icons-material/EventNoteRounded";
-import xn from "@mui/icons-material/ClearRounded";
+import xn from "@mui/icons-material/EventNoteRounded";
+import Dn from "@mui/icons-material/ClearRounded";
 import Tn from "@mui/icons-material/SupervisorAccountRounded";
 import tt from "@mui/icons-material/ArrowRightRounded";
 import nt from "@mui/icons-material/ArrowLeftRounded";
 import { LocalizationProvider as Cn } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns as kn } from "@mui/x-date-pickers/AdapterDateFnsV3";
 import rt from "@mui/icons-material/NavigateBeforeRounded";
-import Ae from "@mui/icons-material/NavigateNextRounded";
+import $e from "@mui/icons-material/NavigateNextRounded";
 import { DateCalendar as Be } from "@mui/x-date-pickers";
 import En from "@mui/icons-material/MoreVert";
-import Mn from "@mui/icons-material/ViewAgenda";
-import { DatePicker as Sn } from "@mui/x-date-pickers/DatePicker";
+import Sn from "@mui/icons-material/ViewAgenda";
+import { DatePicker as Mn } from "@mui/x-date-pickers/DatePicker";
 import { DateTimePicker as In } from "@mui/x-date-pickers/DateTimePicker";
 import Fn from "@mui/icons-material/ExpandMore";
 const Nn = (e) => {
@@ -29,7 +29,7 @@ const Nn = (e) => {
   if (e.day)
     return "day";
   throw new Error("No views were selected");
-}, $n = (e) => {
+}, Rn = (e) => {
   const t = [];
   return e.month && t.push("month"), e.week && t.push("week"), e.day && t.push("day"), t;
 }, We = (e, t, n) => {
@@ -40,14 +40,14 @@ const Nn = (e) => {
   var f;
   const o = n.idField, a = i.find((d) => d.name === o), s = !!((f = a == null ? void 0 : a.config) != null && f.multiple), u = [];
   for (const d of e) {
-    const y = s && !Array.isArray(d[o]) ? [d[o]] : d[o];
-    (s || Array.isArray(y) ? y.includes(t[o]) : y === t[o]) && u.push({
+    const v = s && !Array.isArray(d[o]) ? [d[o]] : d[o];
+    (s || Array.isArray(v) ? v.includes(t[o]) : v === t[o]) && u.push({
       ...d,
       color: d.color || t[n.colorField || ""]
     });
   }
   return u;
-}, An = (e, t) => e.filter(
+}, $n = (e, t) => e.filter(
   (n) => n.event_id !== t.event_id && (oe(ae(t.start, 1), {
     start: n.start,
     end: n.end
@@ -61,7 +61,7 @@ const Nn = (e) => {
     start: t.start,
     end: t.end
   }))
-), xt = (e, t) => Math.ceil(e) / t, Tt = (e, t) => Math.max(e / t, 60), le = (e, t) => ht(Q(Lt(t, -1)), J(e)), Rn = (e) => new Date(
+), Dt = (e, t) => Math.ceil(e) / t, Tt = (e, t) => Math.max(e / t, 60), le = (e, t) => ht(Q(Lt(t, -1)), J(e)), An = (e) => new Date(
   e.getUTCFullYear(),
   e.getUTCMonth(),
   e.getUTCDate(),
@@ -71,7 +71,7 @@ const Nn = (e) => {
   var o;
   const i = Bt(e.end, e.start);
   return e.recurring ? (o = e.recurring) == null ? void 0 : o.between(q(t, -1), q(t, 1), !0).map((a, s) => {
-    const u = Rn(a);
+    const u = An(a);
     return {
       ...e,
       recurrenceId: s,
@@ -85,49 +85,49 @@ const Nn = (e) => {
     for (const a of Ct(e[o], t, n))
       !a.allDay && ue(t, a.start) && !le(a.start, a.end) && i.push(a);
   return Et(i);
-}, xe = (e, t) => {
+}, De = (e, t) => {
   const n = e.filter(
     (i) => oe(t, {
       start: J(i.start),
       end: Q(Vt(i.end, 1))
     })
   );
-  return Me(n);
+  return Se(n);
 }, Et = (e) => e.sort((t, n) => {
   const i = t.end.getTime() - t.start.getTime();
   return n.end.getTime() - n.start.getTime() - i;
-}), Me = (e) => e.sort((t, n) => t.allDay || le(t.start, t.end) > 0 ? -1 : t.start.getTime() - n.start.getTime()), Te = (e, t, n, i) => {
+}), Se = (e) => e.sort((t, n) => t.allDay || le(t.start, t.end) > 0 ? -1 : t.start.getTime() - n.start.getTime()), Te = (e, t, n, i) => {
   var u;
   const o = Array.isArray(t), a = [], s = {};
   for (let f = 0; f < e.length; f++) {
     const d = Ce(e[f], n);
-    let g = d.allDay || le(d.start, d.end) > 0;
-    if (g && (o ? g = t.some(
-      (y) => oe(y, {
+    let p = d.allDay || le(d.start, d.end) > 0;
+    if (p && (o ? p = t.some(
+      (v) => oe(v, {
         start: J(d.start),
         end: Q(d.end)
       })
-    ) : g = oe(t, {
+    ) : p = oe(t, {
       start: J(d.start),
       end: Q(d.end)
-    }), g))
+    }), p))
       if (a.push(d), o)
-        for (const y of t) {
-          const m = N(y, "yyyy-MM-dd");
-          oe(y, { start: J(d.start), end: Q(d.end) }) && (s[m] = (s[m] || []).concat(d));
+        for (const v of t) {
+          const y = N(v, "yyyy-MM-dd");
+          oe(v, { start: J(d.start), end: Q(d.end) }) && (s[y] = (s[y] || []).concat(d));
         }
       else {
-        const y = N(d.start, "yyyy-MM-dd");
-        s[y] = (s[y] || []).concat(d);
+        const v = N(d.start, "yyyy-MM-dd");
+        s[v] = (s[v] || []).concat(d);
       }
   }
   return o && i ? ((u = Object.values(s).sort((f, d) => d.length - f.length)) == null ? void 0 : u[0]) || [] : a;
 }, Ce = (e, t) => ({
   ...e,
-  start: ge(e.start, t),
-  end: ge(e.end, t),
+  start: pe(e.start, t),
+  end: pe(e.end, t),
   convertedTz: !0
-}), ge = (e, t) => new Date(
+}), pe = (e, t) => new Date(
   new Intl.DateTimeFormat("en-US", {
     dateStyle: "short",
     timeStyle: "medium",
@@ -142,7 +142,7 @@ const Nn = (e) => {
   dateLeft: e,
   dateRight: t,
   timeZone: n
-}) => ue(e, ge(t || /* @__PURE__ */ new Date(), n)), ye = (e) => e === "12" ? "hh:mm a" : "HH:mm";
+}) => ue(e, pe(t || /* @__PURE__ */ new Date(), n)), ye = (e) => e === "12" ? "hh:mm a" : "HH:mm";
 function On(e) {
   const t = /* @__PURE__ */ new Date(), n = new Date(t.toLocaleString("en-US", { timeZone: e })), i = new Date(t.toLocaleString("en-US", { timeZone: "UTC" }));
   return Math.round((n.getTime() - i.getTime()) / (60 * 1e3));
@@ -162,12 +162,12 @@ const Wn = {
   step: 60,
   navigation: !0,
   disableGoToDay: !1
-}, Hn = {
+}, zn = {
   startHour: 9,
   endHour: 17,
   step: 60,
   navigation: !0
-}, zn = {
+}, Hn = {
   idField: "assignee",
   textField: "text",
   subTextField: "subtext",
@@ -215,9 +215,9 @@ const Wn = {
   return {
     month: t !== null ? Object.assign(Wn, t) : null,
     week: n !== null ? Object.assign(Pn, n) : null,
-    day: i !== null ? Object.assign(Hn, i) : null
+    day: i !== null ? Object.assign(zn, i) : null
   };
-}, Mt = (e) => {
+}, St = (e) => {
   const {
     translations: t,
     resourceFields: n,
@@ -228,14 +228,14 @@ const Wn = {
     direction: u,
     dialogMaxWidth: f,
     hourFormat: d,
-    ...g
-  } = e, y = Vn(e), m = i || "week", p = y[m] ? m : Nn(y);
+    ...p
+  } = e, v = Vn(e), y = i || "week", g = v[y] ? y : Nn(v);
   return {
-    ...y,
+    ...v,
     translations: Ln(t),
-    resourceFields: Object.assign(zn, n),
-    view: p,
-    selectedDate: ge(a || /* @__PURE__ */ new Date(), e.timeZone),
+    resourceFields: Object.assign(Hn, n),
+    view: g,
+    selectedDate: pe(a || /* @__PURE__ */ new Date(), e.timeZone),
     height: 600,
     navigation: !0,
     disableViewNavigator: !1,
@@ -261,10 +261,10 @@ const Wn = {
     isCellDisabled: void 0,
     disabledCellLabel: "Not available",
     availableCellLabel: "Available",
-    ...g
+    ...p
   };
-}, St = {
-  ...Mt({}),
+}, Mt = {
+  ...St({}),
   setProps: () => {
   },
   dialog: !1,
@@ -288,9 +288,9 @@ const Wn = {
   },
   onDrop: () => {
   }
-}, It = dt(St), $ = () => ct(It), He = ({ resource: e }) => {
-  const { resourceHeaderComponent: t, resourceFields: n, direction: i, resourceViewMode: o } = $(), a = Y(), s = e[n.textField], u = e[n.subTextField || ""], f = e[n.avatarField || ""], d = e[n.colorField || ""];
-  return t instanceof Function ? t(e) : /* @__PURE__ */ M(
+}, It = dt(Mt), R = () => ct(It), ze = ({ resource: e }) => {
+  const { resourceHeaderComponent: t, resourceFields: n, direction: i, resourceViewMode: o } = R(), a = Y(), s = e[n.textField], u = e[n.subTextField || ""], f = e[n.avatarField || ""], d = e[n.colorField || ""];
+  return t instanceof Function ? t(e) : /* @__PURE__ */ S(
     Qt,
     {
       sx: {
@@ -313,9 +313,9 @@ const Wn = {
         /* @__PURE__ */ r(
           _t,
           {
-            primary: /* @__PURE__ */ r(A, { variant: "body2", noWrap: o !== "vertical", children: s }),
+            primary: /* @__PURE__ */ r($, { variant: "body2", noWrap: o !== "vertical", children: s }),
             secondary: /* @__PURE__ */ r(
-              A,
+              $,
               {
                 variant: "caption",
                 color: "textSecondary",
@@ -385,7 +385,7 @@ const jn = _n("div")(({ theme: e }) => ({
   setTab: i,
   indicator: o = "primary",
   style: a
-}) => /* @__PURE__ */ M(jn, { style: a, children: [
+}) => /* @__PURE__ */ S(jn, { style: a, children: [
   /* @__PURE__ */ r(
     Jt,
     {
@@ -412,8 +412,8 @@ const jn = _n("div")(({ theme: e }) => ({
     (s, u) => s.component && /* @__PURE__ */ r(Bn, { value: n, index: s.id, children: s.component }, u)
   )
 ] }), Ge = ({ renderChildren: e }) => {
-  const { resources: t, resourceFields: n, resourceViewMode: i } = $(), o = Y();
-  return i === "tabs" ? /* @__PURE__ */ r(Zn, { renderChildren: e }) : i === "vertical" ? /* @__PURE__ */ r(Z, { children: t.map((a, s) => /* @__PURE__ */ M(we, { sx: { display: "flex" }, children: [
+  const { resources: t, resourceFields: n, resourceViewMode: i } = R(), o = Y();
+  return i === "tabs" ? /* @__PURE__ */ r(Zn, { renderChildren: e }) : i === "vertical" ? /* @__PURE__ */ r(Z, { children: t.map((a, s) => /* @__PURE__ */ S(we, { sx: { display: "flex" }, children: [
     /* @__PURE__ */ r(
       we,
       {
@@ -424,7 +424,7 @@ const jn = _n("div")(({ theme: e }) => ({
           paddingTop: 1,
           flexBasis: 140
         },
-        children: /* @__PURE__ */ r(He, { resource: a })
+        children: /* @__PURE__ */ r(ze, { resource: a })
       }
     ),
     /* @__PURE__ */ r(
@@ -434,23 +434,23 @@ const jn = _n("div")(({ theme: e }) => ({
         children: e(a)
       }
     )
-  ] }, `${a[n.idField]}_${s}`)) }) : /* @__PURE__ */ r(Z, { children: t.map((a, s) => /* @__PURE__ */ M("div", { children: [
-    /* @__PURE__ */ r(He, { resource: a }),
+  ] }, `${a[n.idField]}_${s}`)) }) : /* @__PURE__ */ r(Z, { children: t.map((a, s) => /* @__PURE__ */ S("div", { children: [
+    /* @__PURE__ */ r(ze, { resource: a }),
     e(a)
   ] }, `${a[n.idField]}_${s}`)) });
 }, Zn = ({ renderChildren: e }) => {
-  const { resources: t, resourceFields: n, selectedTab: i, handleState: o, onResourceChange: a } = $(), s = t.map((d) => ({
+  const { resources: t, resourceFields: n, selectedTab: i, handleState: o, onResourceChange: a } = R(), s = t.map((d) => ({
     id: d[n.idField],
-    label: /* @__PURE__ */ r(He, { resource: d }),
+    label: /* @__PURE__ */ r(ze, { resource: d }),
     component: /* @__PURE__ */ r(Z, { children: e(d) })
   })), u = (d) => {
     if (o(d, "selectedTab"), typeof a == "function") {
-      const g = t.find((y) => y[n.idField] === d);
-      g && a(g);
+      const p = t.find((v) => v[n.idField] === d);
+      p && a(p);
     }
   }, f = j(() => {
     const d = t[0][n.idField];
-    return !i || t.findIndex((y) => y[n.idField] === i) < 0 ? d : i;
+    return !i || t.findIndex((v) => v[n.idField] === i) < 0 ? d : i;
   }, [t, n.idField, i]);
   return /* @__PURE__ */ r(Un, { tabs: s, tab: f, setTab: u, style: { display: "grid" } });
 }, qn = ie("div")(({ theme: e, dialog: t }) => ({
@@ -500,7 +500,7 @@ const jn = _n("div")(({ theme: e }) => ({
     display: "flex",
     alignItems: "center"
   }
-})), Se = ie("div")(({ theme: e }) => ({
+})), Me = ie("div")(({ theme: e }) => ({
   borderStyle: "solid",
   borderColor: e.palette.grey[300],
   borderWidth: "1px 1px 0 0",
@@ -531,7 +531,7 @@ const jn = _n("div")(({ theme: e }) => ({
       flexGrow: 1
     }
   }
-})), pe = ie("div")(({ days: e, sticky: t = "0", stickyNavigation: n, indent: i = "1", theme: o }) => ({
+})), ge = ie("div")(({ days: e, sticky: t = "0", stickyNavigation: n, indent: i = "1", theme: o }) => ({
   display: "grid",
   gridTemplateColumns: +i > 0 ? `10% repeat(${e}, 1fr)` : `repeat(${e}, 1fr)`,
   overflowX: "auto",
@@ -670,7 +670,7 @@ const jn = _n("div")(({ theme: e }) => ({
     width: "100%"
   }
 })), Ft = (e) => {
-  const { editable: t, deletable: n, draggable: i } = $(), o = j(() => typeof e.editable < "u" ? e.editable : t, [t, e.editable]), a = j(() => typeof e.deletable < "u" ? e.deletable : n, [n, e.deletable]), s = j(() => {
+  const { editable: t, deletable: n, draggable: i } = R(), o = j(() => typeof e.editable < "u" ? e.editable : t, [t, e.editable]), a = j(() => typeof e.deletable < "u" ? e.deletable : n, [n, e.deletable]), s = j(() => {
     if (o)
       return typeof e.draggable < "u" ? e.draggable : i;
   }, [i, e.draggable, o]);
@@ -680,13 +680,13 @@ const jn = _n("div")(({ theme: e }) => ({
     canDrag: s
   };
 }, er = ({ event: e, onDelete: t, onEdit: n }) => {
-  const { translations: i, direction: o } = $(), [a, s] = P(!1), u = () => {
+  const { translations: i, direction: o } = R(), [a, s] = P(!1), u = () => {
     if (!a)
       return s(!0);
     t();
   }, { canEdit: f, canDelete: d } = Ft(e);
-  return /* @__PURE__ */ M(Jn, { children: [
-    /* @__PURE__ */ r(en, { in: !a, exit: !1, timeout: 400, unmountOnExit: !0, children: /* @__PURE__ */ M("div", { children: [
+  return /* @__PURE__ */ S(Jn, { children: [
+    /* @__PURE__ */ r(en, { in: !a, exit: !1, timeout: 400, unmountOnExit: !0, children: /* @__PURE__ */ S("div", { children: [
       f && /* @__PURE__ */ r(fe, { size: "small", onClick: n, children: /* @__PURE__ */ r(wn, {}) }),
       d && /* @__PURE__ */ r(fe, { size: "small", onClick: u, children: /* @__PURE__ */ r(bn, {}) })
     ] }) }),
@@ -698,7 +698,7 @@ const jn = _n("div")(({ theme: e }) => ({
         unmountOnExit: !0,
         timeout: 400,
         exit: !1,
-        children: /* @__PURE__ */ M("div", { children: [
+        children: /* @__PURE__ */ S("div", { children: [
           /* @__PURE__ */ r(X, { className: "delete", size: "small", onClick: u, children: i.form.delete.toUpperCase() }),
           /* @__PURE__ */ r(X, { className: "cancel", size: "small", onClick: () => s(!1), children: i.form.cancel.toUpperCase() })
         ] })
@@ -714,28 +714,28 @@ const jn = _n("div")(({ theme: e }) => ({
     triggerLoading: u,
     customViewer: f,
     viewerExtraComponent: d,
-    fields: g,
-    resources: y,
-    resourceFields: m,
-    locale: p,
+    fields: p,
+    resources: v,
+    resourceFields: y,
+    locale: g,
     viewerTitleComponent: h,
     hourFormat: c,
     translations: w,
     onEventEdit: l
-  } = $(), b = Y(), E = le(t.start, t.end) <= 0 && t.allDay, k = ye(c), D = m.idField, C = y.filter(
-    (T) => Array.isArray(t[D]) ? t[D].includes(T[D]) : T[D] === t[D]
-  ), x = async () => {
+  } = R(), b = Y(), E = le(t.start, t.end) <= 0 && t.allDay, k = ye(c), x = y.idField, C = v.filter(
+    (T) => Array.isArray(t[x]) ? t[x].includes(T[x]) : T[x] === t[x]
+  ), D = async () => {
     try {
       u(!0);
       let T = t.event_id;
       if (o) {
-        const v = await o(T);
-        v ? T = v : T = "";
+        const _ = await o(T);
+        _ ? T = _ : T = "";
       }
       if (T) {
         n();
-        const v = a.filter((_) => _.event_id !== T);
-        s(v, "events");
+        const _ = a.filter((m) => m.event_id !== T);
+        s(_, "events");
       }
     } catch (T) {
       console.error(T);
@@ -762,8 +762,8 @@ const jn = _n("div")(({ theme: e }) => ({
       onClick: (T) => {
         T.stopPropagation();
       },
-      children: typeof f == "function" ? f(t, () => n()) : /* @__PURE__ */ M(Qn, { children: [
-        /* @__PURE__ */ M(
+      children: typeof f == "function" ? f(t, () => n()) : /* @__PURE__ */ S(Qn, { children: [
+        /* @__PURE__ */ S(
           we,
           {
             sx: {
@@ -771,7 +771,7 @@ const jn = _n("div")(({ theme: e }) => ({
               color: b.palette.primary.contrastText
             },
             children: [
-              /* @__PURE__ */ M("div", { className: "rs__popper_actions", children: [
+              /* @__PURE__ */ S("div", { className: "rs__popper_actions", children: [
                 /* @__PURE__ */ r("div", { children: /* @__PURE__ */ r(
                   fe,
                   {
@@ -779,44 +779,44 @@ const jn = _n("div")(({ theme: e }) => ({
                     onClick: () => {
                       n();
                     },
-                    children: /* @__PURE__ */ r(xn, { color: "disabled" })
+                    children: /* @__PURE__ */ r(Dn, { color: "disabled" })
                   }
                 ) }),
                 /* @__PURE__ */ r(
                   er,
                   {
                     event: t,
-                    onDelete: x,
+                    onDelete: D,
                     onEdit: () => {
                       n(), i(!0, t), l && typeof l == "function" && l(t);
                     }
                   }
                 )
               ] }),
-              h instanceof Function ? h(t) : /* @__PURE__ */ r(A, { style: { padding: "5px 0" }, noWrap: !0, children: t.title })
+              h instanceof Function ? h(t) : /* @__PURE__ */ r($, { style: { padding: "5px 0" }, noWrap: !0, children: t.title })
             ]
           }
         ),
-        /* @__PURE__ */ M("div", { style: { padding: "5px 10px" }, children: [
-          /* @__PURE__ */ M(
-            A,
+        /* @__PURE__ */ S("div", { style: { padding: "5px 10px" }, children: [
+          /* @__PURE__ */ S(
+            $,
             {
               style: { display: "flex", alignItems: "center", gap: 8 },
               color: "textSecondary",
               variant: "caption",
               noWrap: !0,
               children: [
-                /* @__PURE__ */ r(Dn, {}),
+                /* @__PURE__ */ r(xn, {}),
                 E ? w.event.allDay : `${N(t.start, `dd MMMM yyyy ${k}`, {
-                  locale: p
+                  locale: g
                 })} - ${N(t.end, `dd MMMM yyyy ${k}`, {
-                  locale: p
+                  locale: g
                 })}`
               ]
             }
           ),
-          C.length > 0 && /* @__PURE__ */ M(
-            A,
+          C.length > 0 && /* @__PURE__ */ S(
+            $,
             {
               style: { display: "flex", alignItems: "center", gap: 8 },
               color: "textSecondary",
@@ -824,44 +824,44 @@ const jn = _n("div")(({ theme: e }) => ({
               noWrap: !0,
               children: [
                 /* @__PURE__ */ r(Tn, {}),
-                C.map((T) => T[m.textField]).join(", ")
+                C.map((T) => T[y.textField]).join(", ")
               ]
             }
           ),
-          d instanceof Function ? d(g, t) : d
+          d instanceof Function ? d(p, t) : d
         ] })
       ] })
     }
   );
 }, je = ({ day: e, events: t }) => {
-  const [n, i] = P(null), [o, a] = P(), [s, u] = P(!1), { locale: f, hourFormat: d, eventRenderer: g, onEventClick: y, timeZone: m, disableViewer: p } = $(), h = Y(), c = ye(d), w = (l) => {
+  const [n, i] = P(null), [o, a] = P(), [s, u] = P(!1), { locale: f, hourFormat: d, eventRenderer: p, onEventClick: v, timeZone: y, disableViewer: g } = R(), h = Y(), c = ye(d), w = (l) => {
     !(l != null && l.currentTarget) && s && u(!1), i((l == null ? void 0 : l.currentTarget) || null);
   };
-  return /* @__PURE__ */ M(K, { children: [
+  return /* @__PURE__ */ S(K, { children: [
     /* @__PURE__ */ r(nn, { children: t.map((l) => {
       const E = se({
         dateLeft: l.start,
         dateRight: e,
-        timeZone: m
+        timeZone: y
       }) ? c : `MMM d, ${c}`, k = N(l.start, E, {
         locale: f
-      }), C = se({ dateLeft: l.end, dateRight: e, timeZone: m }) ? c : `MMM d, ${c}`, x = N(l.end, C, {
+      }), C = se({ dateLeft: l.end, dateRight: e, timeZone: y }) ? c : `MMM d, ${c}`, D = N(l.end, C, {
         locale: f
       });
-      return typeof g == "function" ? g({
+      return typeof p == "function" ? p({
         event: l,
         onClick: (T) => {
           a(l), w(T);
         }
-      }) : /* @__PURE__ */ M(
+      }) : /* @__PURE__ */ S(
         rn,
         {
           focusRipple: !0,
-          disableRipple: p,
-          tabIndex: p ? -1 : 0,
+          disableRipple: g,
+          tabIndex: g ? -1 : 0,
           disabled: l.disabled,
           onClick: (T) => {
-            T.preventDefault(), T.stopPropagation(), p || w(T), a(l), typeof y == "function" && y(l);
+            T.preventDefault(), T.stopPropagation(), g || w(T), a(l), typeof v == "function" && v(l);
           },
           children: [
             /* @__PURE__ */ r(vt, { children: /* @__PURE__ */ r(
@@ -874,7 +874,7 @@ const jn = _n("div")(({ theme: e }) => ({
                 children: l.agendaAvatar || " "
               }
             ) }),
-            /* @__PURE__ */ r(_t, { primary: l.title, secondary: `${k} - ${x}` })
+            /* @__PURE__ */ r(_t, { primary: l.title, secondary: `${k} - ${D}` })
           ]
         },
         `${l.start.getTime()}_${l.end.getTime()}_${l.event_id}`
@@ -890,9 +890,9 @@ const jn = _n("div")(({ theme: e }) => ({
     )
   ] });
 }, Ue = () => {
-  const { height: e, translations: t } = $();
+  const { height: e, translations: t } = R();
   return /* @__PURE__ */ r(
-    Se,
+    Me,
     {
       sx: {
         borderWidth: 1,
@@ -902,31 +902,31 @@ const jn = _n("div")(({ theme: e }) => ({
         alignItems: "center",
         justifyContent: "center"
       },
-      children: /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: /* @__PURE__ */ r(A, { children: t.noDataToDisplay }) })
+      children: /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: /* @__PURE__ */ r($, { children: t.noDataToDisplay }) })
     }
   );
 }, tr = ({ daysList: e, resource: t, events: n }) => {
-  const { week: i, handleGotoDay: o, locale: a, timeZone: s, translations: u, alwaysShowAgendaDays: f } = $(), { disableGoToDay: d, headRenderer: g } = i, y = j(() => e.some((m) => xe(n, m).length > 0), [e, n]);
-  return !f && !y ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Se, { children: e.map((m, p) => {
-    const h = se({ dateLeft: m, timeZone: s }), c = xe(n, m);
-    return !f && !c.length ? null : /* @__PURE__ */ M("div", { className: `rs__agenda_row ${he(m) ? "rs__today_cell" : ""}`, children: [
-      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof g == "function" ? /* @__PURE__ */ r("div", { children: g({ day: m, events: n, resource: t }) }) : /* @__PURE__ */ r(
-        A,
+  const { week: i, handleGotoDay: o, locale: a, timeZone: s, translations: u, alwaysShowAgendaDays: f } = R(), { disableGoToDay: d, headRenderer: p } = i, v = j(() => e.some((y) => De(n, y).length > 0), [e, n]);
+  return !f && !v ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Me, { children: e.map((y, g) => {
+    const h = se({ dateLeft: y, timeZone: s }), c = De(n, y);
+    return !f && !c.length ? null : /* @__PURE__ */ S("div", { className: `rs__agenda_row ${he(y) ? "rs__today_cell" : ""}`, children: [
+      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof p == "function" ? /* @__PURE__ */ r("div", { children: p({ day: y, events: n, resource: t }) }) : /* @__PURE__ */ r(
+        $,
         {
           sx: { fontWeight: h ? "bold" : "inherit" },
           color: h ? "primary" : "inherit",
           variant: "body2",
           className: d ? "" : "rs__hover__op",
           onClick: (w) => {
-            w.stopPropagation(), d || o(m);
+            w.stopPropagation(), d || o(y);
           },
-          children: N(m, "dd E", { locale: a })
+          children: N(y, "dd E", { locale: a })
         }
       ) }),
-      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: c.length > 0 ? /* @__PURE__ */ r(je, { day: m, events: c }) : /* @__PURE__ */ r(A, { sx: { padding: 1 }, children: u.noDataToDisplay }) })
-    ] }, p);
+      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: c.length > 0 ? /* @__PURE__ */ r(je, { day: y, events: c }) : /* @__PURE__ */ r($, { sx: { padding: 1 }, children: u.noDataToDisplay }) })
+    ] }, g);
   }) });
-}, ze = 1, ce = 28, it = 27, nr = 23, $t = () => {
+}, He = 1, ce = 28, it = 27, nr = 23, Rt = () => {
   const e = Ye(null), t = Ye(null);
   return ee(() => {
     const n = e.current, i = t.current, o = (a) => {
@@ -937,11 +937,11 @@ const jn = _n("div")(({ theme: e }) => ({
       n == null || n.removeEventListener("scroll", o), i == null || i.removeEventListener("scroll", o);
     };
   }), { headersRef: e, bodyRef: t };
-}, At = ({ date: e, onClick: t, locale: n }) => {
-  const { timeZone: i } = $(), o = se({ dateLeft: e, timeZone: i });
-  return /* @__PURE__ */ M("div", { children: [
+}, $t = ({ date: e, onClick: t, locale: n }) => {
+  const { timeZone: i } = R(), o = se({ dateLeft: e, timeZone: i });
+  return /* @__PURE__ */ S("div", { children: [
     /* @__PURE__ */ r(
-      A,
+      $,
       {
         style: {
           fontWeight: o ? "bold" : "inherit"
@@ -955,7 +955,7 @@ const jn = _n("div")(({ theme: e }) => ({
       }
     ),
     /* @__PURE__ */ r(
-      A,
+      $,
       {
         color: o ? "primary" : "inherit",
         style: {
@@ -966,12 +966,12 @@ const jn = _n("div")(({ theme: e }) => ({
       }
     )
   ] });
-}, Rt = dt({
+}, At = dt({
   renderedSlots: {},
   setRenderedSlot: () => {
   }
-}), Ot = () => ct(Rt), rr = (e) => {
-  const { setCurrentDragged: t } = $(), n = Y();
+}), Ot = () => ct(At), rr = (e) => {
+  const { setCurrentDragged: t } = R(), n = Y();
   return {
     draggable: !0,
     onDragStart: (i) => {
@@ -988,25 +988,25 @@ const jn = _n("div")(({ theme: e }) => ({
     }
   };
 }, Ie = ({ event: e, multiday: t, hasPrev: n, hasNext: i, showdate: o = !0 }) => {
-  const { direction: a, locale: s, hourFormat: u, eventRenderer: f, onEventClick: d, view: g, disableViewer: y } = $(), m = rr(e), [p, h] = P(null), [c, w] = P(!1), l = Y(), b = ye(u), E = a === "rtl" ? nt : tt, k = a === "rtl" ? tt : nt, D = le(e.start, e.end) <= 0 && e.allDay, { canDrag: C } = Ft(e), x = U(
-    (v) => {
-      !(v != null && v.currentTarget) && c && w(!1), h((v == null ? void 0 : v.currentTarget) || null);
+  const { direction: a, locale: s, hourFormat: u, eventRenderer: f, onEventClick: d, view: p, disableViewer: v } = R(), y = rr(e), [g, h] = P(null), [c, w] = P(!1), l = Y(), b = ye(u), E = a === "rtl" ? nt : tt, k = a === "rtl" ? tt : nt, x = le(e.start, e.end) <= 0 && e.allDay, { canDrag: C } = Ft(e), D = U(
+    (_) => {
+      !(_ != null && _.currentTarget) && c && w(!1), h((_ == null ? void 0 : _.currentTarget) || null);
     },
     [c]
   ), T = j(() => {
-    if (typeof f == "function" && !t && g !== "month") {
-      const _ = f({ event: e, onClick: x, ...m });
-      if (_)
-        return /* @__PURE__ */ r(ot, { children: _ }, `${e.start.getTime()}_${e.end.getTime()}_${e.event_id}`);
+    if (typeof f == "function" && !t && p !== "month") {
+      const m = f({ event: e, onClick: D, ...y });
+      if (m)
+        return /* @__PURE__ */ r(ot, { children: m }, `${e.start.getTime()}_${e.end.getTime()}_${e.event_id}`);
     }
-    let v = /* @__PURE__ */ M("div", { style: { padding: "2px 6px" }, children: [
-      /* @__PURE__ */ r(A, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: e.title }),
-      e.subtitle && /* @__PURE__ */ r(A, { variant: "body2", style: { fontSize: 11 }, noWrap: !0, children: e.subtitle }),
-      o && /* @__PURE__ */ r(A, { style: { fontSize: 11 }, noWrap: !0, children: `${N(e.start, b, {
+    let _ = /* @__PURE__ */ S("div", { style: { padding: "2px 6px" }, children: [
+      /* @__PURE__ */ r($, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: e.title }),
+      e.subtitle && /* @__PURE__ */ r($, { variant: "body2", style: { fontSize: 11 }, noWrap: !0, children: e.subtitle }),
+      o && /* @__PURE__ */ r($, { style: { fontSize: 11 }, noWrap: !0, children: `${N(e.start, b, {
         locale: s
       })} - ${N(e.end, b, { locale: s })}` })
     ] });
-    return t && (v = /* @__PURE__ */ M(
+    return t && (_ = /* @__PURE__ */ S(
       "div",
       {
         style: {
@@ -1016,9 +1016,9 @@ const jn = _n("div")(({ theme: e }) => ({
           justifyContent: "space-between"
         },
         children: [
-          /* @__PURE__ */ r(A, { sx: { fontSize: 11 }, noWrap: !0, children: n ? /* @__PURE__ */ r(k, { fontSize: "small", sx: { display: "flex" } }) : o && !D && N(e.start, b, { locale: s }) }),
-          /* @__PURE__ */ r(A, { variant: "subtitle2", align: "center", sx: { fontSize: 12 }, noWrap: !0, children: e.title }),
-          /* @__PURE__ */ r(A, { sx: { fontSize: 11 }, noWrap: !0, children: i ? /* @__PURE__ */ r(E, { fontSize: "small", sx: { display: "flex" } }) : o && !D && N(e.end, b, { locale: s }) })
+          /* @__PURE__ */ r($, { sx: { fontSize: 11 }, noWrap: !0, children: n ? /* @__PURE__ */ r(k, { fontSize: "small", sx: { display: "flex" } }) : o && !x && N(e.start, b, { locale: s }) }),
+          /* @__PURE__ */ r($, { variant: "subtitle2", align: "center", sx: { fontSize: 12 }, noWrap: !0, children: e.title }),
+          /* @__PURE__ */ r($, { sx: { fontSize: 11 }, noWrap: !0, children: i ? /* @__PURE__ */ r(E, { fontSize: "small", sx: { display: "flex" } }) : o && !x && N(e.end, b, { locale: s }) })
         ]
       }
     )), /* @__PURE__ */ r(
@@ -1033,14 +1033,14 @@ const jn = _n("div")(({ theme: e }) => ({
         children: /* @__PURE__ */ r(
           on,
           {
-            onClick: (_) => {
-              _.preventDefault(), _.stopPropagation(), y || x(_), typeof d == "function" && d(e);
+            onClick: (m) => {
+              m.preventDefault(), m.stopPropagation(), v || D(m), typeof d == "function" && d(e);
             },
             focusRipple: !0,
-            tabIndex: y ? -1 : 0,
-            disableRipple: y,
+            tabIndex: v ? -1 : 0,
+            disableRipple: v,
             disabled: e.disabled,
-            children: /* @__PURE__ */ r("div", { ...m, draggable: C, children: v })
+            children: /* @__PURE__ */ r("div", { ...y, draggable: C, children: _ })
           }
         )
       },
@@ -1049,41 +1049,41 @@ const jn = _n("div")(({ theme: e }) => ({
   }, [
     f,
     t,
-    g,
+    p,
     e,
     o,
     b,
     s,
     l.palette.primary.main,
     l.palette.primary.contrastText,
+    v,
     y,
-    m,
     C,
-    x,
+    D,
     n,
     k,
-    D,
+    x,
     i,
     E,
     d
   ]);
-  return /* @__PURE__ */ M(K, { children: [
+  return /* @__PURE__ */ S(K, { children: [
     T,
-    /* @__PURE__ */ r(Nt, { anchorEl: p, event: e, onTriggerViewer: x })
+    /* @__PURE__ */ r(Nt, { anchorEl: g, event: e, onTriggerViewer: D })
   ] });
 };
-function Re({ startHour: e, step: t, minuteHeight: n, timeZone: i }) {
-  const o = ge(/* @__PURE__ */ new Date(), i), a = ke(o, ve(o, { hours: e, minutes: 0 })), s = a * n, f = a / t + ze;
+function Ae({ startHour: e, step: t, minuteHeight: n, timeZone: i }) {
+  const o = pe(/* @__PURE__ */ new Date(), i), a = ke(o, ve(o, { hours: e, minutes: 0 })), s = a * n, f = a / t + He;
   return s + f;
 }
 const or = (e) => {
-  const [t, n] = P(Re(e)), { startHour: i, step: o, minuteHeight: a, timeZone: s } = e;
+  const [t, n] = P(Ae(e)), { startHour: i, step: o, minuteHeight: a, timeZone: s } = e;
   return ee(() => {
     const u = { startHour: i, step: o, minuteHeight: a, timeZone: s };
-    n(Re(u));
-    const f = setInterval(() => n(Re(u)), 60 * 1e3);
+    n(Ae(u));
+    const f = setInterval(() => n(Ae(u)), 60 * 1e3);
     return () => clearInterval(f);
-  }, [i, o, a, s]), t < 0 ? null : /* @__PURE__ */ M(Kn, { style: { top: t, zIndex: e.zIndex }, children: [
+  }, [i, o, a, s]), t < 0 ? null : /* @__PURE__ */ S(Kn, { style: { top: t, zIndex: e.zIndex }, children: [
     /* @__PURE__ */ r("div", {}),
     /* @__PURE__ */ r("div", {})
   ] });
@@ -1098,7 +1098,7 @@ const or = (e) => {
   timeZone: u
 }) => {
   const f = [];
-  return /* @__PURE__ */ M(K, { children: [
+  return /* @__PURE__ */ S(K, { children: [
     se({ dateLeft: t, timeZone: u }) && /* @__PURE__ */ r(
       or,
       {
@@ -1109,19 +1109,19 @@ const or = (e) => {
         zIndex: 2 * e.length + 1
       }
     ),
-    e.map((d, g) => {
-      const y = (i * 60 - n * 60) * a, m = ke(d.end, d.start) * a, p = Math.min(m, y) - ze, h = n * 60, c = d.start.getHours() * 60 + d.start.getMinutes(), w = Math.max(c - h, 0), l = w * a, E = p / 60 * ze, k = w / o, D = l + k, C = An(e, d), x = C.filter((T) => f.includes(T.event_id));
+    e.map((d, p) => {
+      const v = (i * 60 - n * 60) * a, y = ke(d.end, d.start) * a, g = Math.min(y, v) - He, h = n * 60, c = d.start.getHours() * 60 + d.start.getMinutes(), w = Math.max(c - h, 0), l = w * a, E = g / 60 * He, k = w / o, x = l + k, C = $n(e, d), D = C.filter((T) => f.includes(T.event_id));
       return f.push(d.event_id), /* @__PURE__ */ r(
         "div",
         {
           className: "rs__event__item",
           style: {
-            height: p + E,
-            top: D,
-            width: x.length > 0 ? `calc(100% - ${100 - 98 / (x.length + 1)}%)` : "98%",
+            height: g + E,
+            top: x,
+            width: D.length > 0 ? `calc(100% - ${100 - 98 / (D.length + 1)}%)` : "98%",
             // Leave some space to click cell
-            zIndex: e.length + g,
-            [s === "rtl" ? "right" : "left"]: x.length > 0 ? `${100 / (C.length + 1) * x.length}%` : ""
+            zIndex: e.length + p,
+            [s === "rtl" ? "right" : "left"]: D.length > 0 ? `${100 / (C.length + 1) * D.length}%` : ""
           },
           children: /* @__PURE__ */ r(Ie, { event: d })
         },
@@ -1137,16 +1137,16 @@ const or = (e) => {
     currentDragged: u,
     setCurrentDragged: f,
     editable: d,
-    timeZone: g,
-    isCellDisabled: y,
-    disabledCellLabel: m,
-    availableCellLabel: p
-  } = $(), h = Y(), c = j(() => y && typeof y == "function" ? y(e, t, n, i) : !1, [y, e, t, n, i]), w = d && !c;
+    timeZone: p,
+    isCellDisabled: v,
+    disabledCellLabel: y,
+    availableCellLabel: g
+  } = R(), h = Y(), c = j(() => v && typeof v == "function" ? v(e, t, n, i) : !1, [v, e, t, n, i]), w = d && !c;
   return {
     tabIndex: w ? 0 : -1,
     disableRipple: !w,
     disabled: c,
-    title: c ? m : p,
+    title: c ? y : g,
     sx: c ? {
       backgroundColor: de(h.palette.grey[400], 0.3),
       cursor: "not-allowed",
@@ -1173,7 +1173,7 @@ const or = (e) => {
     onDrop: (l) => {
       if (!c && u && u.event_id) {
         l.preventDefault(), l.currentTarget.style.backgroundColor = "";
-        const b = Pe(e, g);
+        const b = Pe(e, p);
         s(l, u.event_id.toString(), b, n, i), f();
       }
     },
@@ -1221,40 +1221,40 @@ const or = (e) => {
     events: u,
     handleGotoDay: f,
     resources: d,
-    resourceFields: g,
-    resourceViewMode: y,
-    direction: m,
-    locale: p,
+    resourceFields: p,
+    resourceViewMode: v,
+    direction: y,
+    locale: g,
     hourFormat: h,
     timeZone: c,
     stickyNavigation: w
-  } = $(), { startHour: l, endHour: b, step: E, cellRenderer: k, disableGoToDay: D, headRenderer: C, hourRenderer: x } = s, { renderedSlots: T } = Ot(), { headersRef: v, bodyRef: _ } = $t(), S = ce, I = J(e[0]), H = Q(e[e.length - 1]), z = ye(h), V = j(() => {
-    const R = d.length && y === "default", F = Te(
-      R ? u : o,
+  } = R(), { startHour: l, endHour: b, step: E, cellRenderer: k, disableGoToDay: x, headRenderer: C, hourRenderer: D } = s, { renderedSlots: T } = Ot(), { headersRef: _, bodyRef: m } = Rt(), M = ce, I = J(e[0]), z = Q(e[e.length - 1]), H = ye(h), V = j(() => {
+    const A = d.length && v === "default", F = Te(
+      A ? u : o,
       e,
       c,
       !0
     );
-    return S * F.length + 45;
+    return M * F.length + 45;
   }, [
-    S,
+    M,
     e,
     u,
-    y,
+    v,
     o,
     d.length,
     c
-  ]), W = (R, F, B) => {
+  ]), W = (A, F, B) => {
     const te = ue(I, F);
-    return Te(R, e, c).filter((O) => De(O.start, I) ? te : ue(O.start, F)).sort((O, re) => re.end.getTime() - O.end.getTime()).map((O) => {
+    return Te(A, e, c).filter((O) => xe(O.start, I) ? te : ue(O.start, F)).sort((O, re) => re.end.getTime() - O.end.getTime()).map((O) => {
       var Xe;
-      const re = De(J(O.start), I), L = ft(Q(O.end), H), Ne = le(re ? I : O.start, L ? H : O.end) + 1, Pt = N(F, "yyyy-MM-dd"), Ht = B ? B[g.idField] : "all", $e = (Xe = T == null ? void 0 : T[Ht]) == null ? void 0 : Xe[Pt], zt = ($e == null ? void 0 : $e[O.event_id]) || 0;
+      const re = xe(J(O.start), I), L = ft(Q(O.end), z), Ne = le(re ? I : O.start, L ? z : O.end) + 1, Pt = N(F, "yyyy-MM-dd"), zt = B ? B[p.idField] : "all", Re = (Xe = T == null ? void 0 : T[zt]) == null ? void 0 : Xe[Pt], Ht = (Re == null ? void 0 : Re[O.event_id]) || 0;
       return /* @__PURE__ */ r(
         "div",
         {
           className: "rs__multi_day",
           style: {
-            top: zt * S + 45,
+            top: Ht * M + 45,
             width: `${99.9 * Ne}%`,
             overflowX: "hidden"
           },
@@ -1264,31 +1264,31 @@ const or = (e) => {
       );
     });
   };
-  return /* @__PURE__ */ M(Z, { children: [
-    /* @__PURE__ */ M(
-      pe,
+  return /* @__PURE__ */ S(Z, { children: [
+    /* @__PURE__ */ S(
+      ge,
       {
         days: e.length,
-        ref: v,
+        ref: _,
         sticky: "1",
         stickyNavigation: w,
         children: [
           /* @__PURE__ */ r("span", { className: "rs__cell rs__time" }),
-          e.map((R, F) => /* @__PURE__ */ M(
+          e.map((A, F) => /* @__PURE__ */ S(
             "span",
             {
-              className: `rs__cell rs__header ${he(R) ? "rs__today_cell" : ""}`,
+              className: `rs__cell rs__header ${he(A) ? "rs__today_cell" : ""}`,
               style: { height: V },
               children: [
-                typeof C == "function" ? /* @__PURE__ */ r("div", { children: C({ day: R, events: o, resource: a }) }) : /* @__PURE__ */ r(
-                  At,
+                typeof C == "function" ? /* @__PURE__ */ r("div", { children: C({ day: A, events: o, resource: a }) }) : /* @__PURE__ */ r(
+                  $t,
                   {
-                    date: R,
-                    onClick: D ? void 0 : f,
-                    locale: p
+                    date: A,
+                    onClick: x ? void 0 : f,
+                    locale: g
                   }
                 ),
-                W(o, R, a)
+                W(o, A, a)
               ]
             },
             F
@@ -1296,11 +1296,11 @@ const or = (e) => {
         ]
       }
     ),
-    /* @__PURE__ */ r(pe, { days: e.length, ref: _, children: t.map((R, F) => /* @__PURE__ */ M(K, { children: [
-      /* @__PURE__ */ r("span", { style: { height: n }, className: "rs__cell rs__header rs__time", children: typeof x == "function" ? /* @__PURE__ */ r("div", { children: x(N(R, z, { locale: p })) }) : /* @__PURE__ */ r(A, { variant: "caption", children: N(R, z, { locale: p }) }) }),
+    /* @__PURE__ */ r(ge, { days: e.length, ref: m, children: t.map((A, F) => /* @__PURE__ */ S(K, { children: [
+      /* @__PURE__ */ r("span", { style: { height: n }, className: "rs__cell rs__header rs__time", children: typeof D == "function" ? /* @__PURE__ */ r("div", { children: D(N(A, H, { locale: g })) }) : /* @__PURE__ */ r($, { variant: "caption", children: N(A, H, { locale: g }) }) }),
       e.map((B, te) => {
-        const G = /* @__PURE__ */ new Date(`${N(B, "yyyy/MM/dd")} ${N(R, z)}`), ne = ae(G, E), O = g.idField;
-        return /* @__PURE__ */ M("span", { className: `rs__cell ${he(B) ? "rs__today_cell" : ""}`, children: [
+        const G = /* @__PURE__ */ new Date(`${N(B, "yyyy/MM/dd")} ${N(A, H)}`), ne = ae(G, E), O = p.idField;
+        return /* @__PURE__ */ S("span", { className: `rs__cell ${he(B) ? "rs__today_cell" : ""}`, children: [
           F === 0 && /* @__PURE__ */ r(
             Wt,
             {
@@ -1310,7 +1310,7 @@ const or = (e) => {
               startHour: l,
               endHour: b,
               step: E,
-              direction: m,
+              direction: y,
               timeZone: c
             }
           ),
@@ -1342,53 +1342,53 @@ const or = (e) => {
     resources: u,
     resourceFields: f,
     fields: d,
-    agenda: g
-  } = $(), { weekStartOn: y, weekDays: m, startHour: p, endHour: h, step: c } = e, w = Ee(t, { weekStartsOn: y }), l = m.map((S) => q(w, S)), b = J(l[0]), E = Q(l[l.length - 1]), k = ve(t, { hours: p, minutes: 0, seconds: 0 }), D = ve(t, { hours: h, minutes: -c, seconds: 0 }), C = gt(
+    agenda: p
+  } = R(), { weekStartOn: v, weekDays: y, startHour: g, endHour: h, step: c } = e, w = Ee(t, { weekStartsOn: v }), l = y.map((M) => q(w, M)), b = J(l[0]), E = Q(l[l.length - 1]), k = ve(t, { hours: g, minutes: 0, seconds: 0 }), x = ve(t, { hours: h, minutes: -c, seconds: 0 }), C = pt(
     {
       start: k,
-      end: D
+      end: x
     },
     { step: c }
-  ), x = Tt(n, C.length), T = xt(x, c), v = U(async () => {
+  ), D = Tt(n, C.length), T = Dt(D, c), _ = U(async () => {
     try {
       a(!0);
-      const S = await o({
+      const M = await o({
         start: b,
         end: E,
         view: "week"
       });
-      Array.isArray(S) && s(S, "events");
-    } catch (S) {
-      throw S;
+      Array.isArray(M) && s(M, "events");
+    } catch (M) {
+      throw M;
     } finally {
       a(!1);
     }
   }, [o]);
   ee(() => {
-    o instanceof Function && v();
-  }, [v, o]);
-  const _ = (S) => {
+    o instanceof Function && _();
+  }, [_, o]);
+  const m = (M) => {
     let I = i;
-    return S && (I = be(i, S, f, d)), g ? /* @__PURE__ */ r(tr, { daysList: l, resource: S, events: I }) : /* @__PURE__ */ r(
+    return M && (I = be(i, M, f, d)), p ? /* @__PURE__ */ r(tr, { daysList: l, resource: M, events: I }) : /* @__PURE__ */ r(
       ar,
       {
         resourcedEvents: I,
-        resource: S,
+        resource: M,
         hours: C,
-        cellHeight: x,
+        cellHeight: D,
         minutesHeight: T,
         daysList: l
       }
     );
   };
-  return u.length ? /* @__PURE__ */ r(Ge, { renderChildren: _ }) : _();
+  return u.length ? /* @__PURE__ */ r(Ge, { renderChildren: m }) : m();
 }, Fe = ({ children: e }) => {
-  const { locale: t } = $();
+  const { locale: t } = R();
   return /* @__PURE__ */ r(Cn, { dateAdapter: kn, adapterLocale: t, children: e });
 }, me = ({ type: e, onClick: t, ...n }) => {
-  const { direction: i } = $();
-  let o = Ae;
-  return e === "prev" ? o = i === "rtl" ? Ae : rt : e === "next" && (o = i === "rtl" ? rt : Ae), /* @__PURE__ */ r(
+  const { direction: i } = R();
+  let o = $e;
+  return e === "prev" ? o = i === "rtl" ? $e : rt : e === "next" && (o = i === "rtl" ? rt : $e), /* @__PURE__ */ r(
     fe,
     {
       style: { padding: 2 },
@@ -1401,15 +1401,15 @@ const or = (e) => {
     }
   );
 }, qe = () => {
-  const { selectedDate: e, week: t, navigationPickerProps: n, view: i } = $(), o = n == null ? void 0 : n.minDate, a = n == null ? void 0 : n.maxDate, s = i === "month" ? pt(e) : i === "week" ? mt(e, { weekStartsOn: t == null ? void 0 : t.weekStartOn }) : e, u = i === "month" ? Le(e) : i === "week" ? Ee(e, { weekStartsOn: t == null ? void 0 : t.weekStartOn }) : e, f = o ? u <= o : !1, d = a ? s >= a : !1;
+  const { selectedDate: e, week: t, navigationPickerProps: n, view: i } = R(), o = n == null ? void 0 : n.minDate, a = n == null ? void 0 : n.maxDate, s = i === "month" ? gt(e) : i === "week" ? mt(e, { weekStartsOn: t == null ? void 0 : t.weekStartOn }) : e, u = i === "month" ? Le(e) : i === "week" ? Ee(e, { weekStartsOn: t == null ? void 0 : t.weekStartOn }) : e, f = o ? u <= o : !1, d = a ? s >= a : !1;
   return { prevDisabled: f, nextDisabled: d };
 }, sr = ({ selectedDate: e, onChange: t, weekProps: n }) => {
-  const { locale: i, navigationPickerProps: o } = $(), [a, s] = P(null), { weekStartOn: u } = n, f = Ee(e, { weekStartsOn: u }), d = mt(e, { weekStartsOn: u }), { prevDisabled: g, nextDisabled: y } = qe(), m = (l) => {
+  const { locale: i, navigationPickerProps: o } = R(), [a, s] = P(null), { weekStartOn: u } = n, f = Ee(e, { weekStartsOn: u }), d = mt(e, { weekStartsOn: u }), { prevDisabled: p, nextDisabled: v } = qe(), y = (l) => {
     s(l.currentTarget);
-  }, p = () => {
+  }, g = () => {
     s(null);
   }, h = (l) => {
-    t(l || /* @__PURE__ */ new Date()), p();
+    t(l || /* @__PURE__ */ new Date()), g();
   }, c = () => {
     const l = q(f, -1);
     t(l);
@@ -1417,17 +1417,17 @@ const or = (e) => {
     const l = q(d, 1);
     t(l);
   };
-  return /* @__PURE__ */ M(Z, { children: [
+  return /* @__PURE__ */ S(Z, { children: [
     /* @__PURE__ */ r(
       me,
       {
         type: "prev",
         onClick: c,
-        disabled: g,
+        disabled: p,
         "aria-label": "previous week"
       }
     ),
-    /* @__PURE__ */ r(X, { style: { padding: 4 }, onClick: m, "aria-label": "selected week", children: `${N(f, "dd", { locale: i })} - ${N(d, "dd MMM yyyy", {
+    /* @__PURE__ */ r(X, { style: { padding: 4 }, onClick: y, "aria-label": "selected week", children: `${N(f, "dd", { locale: i })} - ${N(d, "dd MMM yyyy", {
       locale: i
     })}` }),
     /* @__PURE__ */ r(
@@ -1435,7 +1435,7 @@ const or = (e) => {
       {
         open: !!a,
         anchorEl: a,
-        onClose: p,
+        onClose: g,
         anchorOrigin: {
           vertical: "bottom",
           horizontal: "left"
@@ -1457,31 +1457,31 @@ const or = (e) => {
       {
         type: "next",
         onClick: w,
-        disabled: y,
+        disabled: v,
         "aria-label": "next week"
       }
     )
   ] });
 }, dr = ({ selectedDate: e, onChange: t }) => {
-  const { locale: n, navigationPickerProps: i } = $(), [o, a] = P(null), { prevDisabled: s, nextDisabled: u } = qe(), f = (p) => {
-    a(p.currentTarget);
+  const { locale: n, navigationPickerProps: i } = R(), [o, a] = P(null), { prevDisabled: s, nextDisabled: u } = qe(), f = (g) => {
+    a(g.currentTarget);
   }, d = () => {
     a(null);
-  }, g = (p) => {
-    t(p || /* @__PURE__ */ new Date()), d();
+  }, p = (g) => {
+    t(g || /* @__PURE__ */ new Date()), d();
+  }, v = () => {
+    const g = q(e, -1);
+    t(g);
   }, y = () => {
-    const p = q(e, -1);
-    t(p);
-  }, m = () => {
-    const p = q(e, 1);
-    t(p);
+    const g = q(e, 1);
+    t(g);
   };
-  return /* @__PURE__ */ M(Z, { children: [
+  return /* @__PURE__ */ S(Z, { children: [
     /* @__PURE__ */ r(
       me,
       {
         type: "prev",
-        onClick: y,
+        onClick: v,
         disabled: s,
         "aria-label": "previous day"
       }
@@ -1504,33 +1504,33 @@ const or = (e) => {
             openTo: "day",
             views: ["month", "day"],
             value: e,
-            onChange: g
+            onChange: p
           }
         ) })
       }
     ),
-    /* @__PURE__ */ r(me, { type: "next", onClick: m, disabled: u, "aria-label": "next day" })
+    /* @__PURE__ */ r(me, { type: "next", onClick: y, disabled: u, "aria-label": "next day" })
   ] });
 }, cr = ({ selectedDate: e, onChange: t }) => {
-  const { locale: n, navigationPickerProps: i } = $(), o = jt(e), [a, s] = P(null), { prevDisabled: u, nextDisabled: f } = qe(), d = (h) => {
+  const { locale: n, navigationPickerProps: i } = R(), o = jt(e), [a, s] = P(null), { prevDisabled: u, nextDisabled: f } = qe(), d = (h) => {
     s(h.currentTarget);
-  }, g = () => {
+  }, p = () => {
     s(null);
-  }, y = (h) => {
-    t(h || /* @__PURE__ */ new Date()), g();
-  }, m = () => {
+  }, v = (h) => {
+    t(h || /* @__PURE__ */ new Date()), p();
+  }, y = () => {
     const h = o - 1;
     t(Qe(e, h));
-  }, p = () => {
+  }, g = () => {
     const h = o + 1;
     t(Qe(e, h));
   };
-  return /* @__PURE__ */ M(Z, { children: [
+  return /* @__PURE__ */ S(Z, { children: [
     /* @__PURE__ */ r(
       me,
       {
         type: "prev",
-        onClick: m,
+        onClick: y,
         disabled: u,
         "aria-label": "previous month"
       }
@@ -1541,7 +1541,7 @@ const or = (e) => {
       {
         open: !!a,
         anchorEl: a,
-        onClose: g,
+        onClose: p,
         anchorOrigin: {
           vertical: "bottom",
           horizontal: "left"
@@ -1553,7 +1553,7 @@ const or = (e) => {
             openTo: "month",
             views: ["year", "month"],
             value: e,
-            onChange: y
+            onChange: v
           }
         ) })
       }
@@ -1562,7 +1562,7 @@ const or = (e) => {
       me,
       {
         type: "next",
-        onClick: p,
+        onClick: g,
         disabled: f,
         "aria-label": "next month"
       }
@@ -1580,41 +1580,41 @@ const or = (e) => {
     day: u,
     month: f,
     disableViewNavigator: d,
-    onSelectedDateChange: g,
-    onViewChange: y,
-    stickyNavigation: m,
-    timeZone: p,
+    onSelectedDateChange: p,
+    onViewChange: v,
+    stickyNavigation: y,
+    timeZone: g,
     agenda: h,
     toggleAgenda: c,
     enableAgenda: w
-  } = $(), [l, b] = P(null), E = Y(), k = wt(E.breakpoints.up("sm")), D = o(), C = (_) => {
-    b(_ || null);
-  }, x = (_) => {
-    i(_, "selectedDate"), g && typeof g == "function" && g(_);
-  }, T = (_) => {
-    i(_, "view"), y && typeof y == "function" && y(_, h);
-  }, v = () => {
+  } = R(), [l, b] = P(null), E = Y(), k = wt(E.breakpoints.up("sm")), x = o(), C = (m) => {
+    b(m || null);
+  }, D = (m) => {
+    i(m, "selectedDate"), p && typeof p == "function" && p(m);
+  }, T = (m) => {
+    i(m, "view"), v && typeof v == "function" && v(m, h);
+  }, _ = () => {
     switch (t) {
       case "month":
-        return (f == null ? void 0 : f.navigation) && /* @__PURE__ */ r(cr, { selectedDate: e, onChange: x });
+        return (f == null ? void 0 : f.navigation) && /* @__PURE__ */ r(cr, { selectedDate: e, onChange: D });
       case "week":
         return (n == null ? void 0 : n.navigation) && /* @__PURE__ */ r(
           sr,
           {
             selectedDate: e,
-            onChange: x,
+            onChange: D,
             weekProps: n
           }
         );
       case "day":
-        return (u == null ? void 0 : u.navigation) && /* @__PURE__ */ r(dr, { selectedDate: e, onChange: x });
+        return (u == null ? void 0 : u.navigation) && /* @__PURE__ */ r(dr, { selectedDate: e, onChange: D });
       default:
         return "";
     }
   };
-  return !s && d ? null : /* @__PURE__ */ M(Yn, { sticky: m ? "1" : "0", children: [
-    /* @__PURE__ */ r("div", { "data-testid": "date-navigator", children: s && v() }),
-    /* @__PURE__ */ M(
+  return !s && d ? null : /* @__PURE__ */ S(Yn, { sticky: y ? "1" : "0", children: [
+    /* @__PURE__ */ r("div", { "data-testid": "date-navigator", children: s && _() }),
+    /* @__PURE__ */ S(
       "div",
       {
         className: "rs__view_navigator",
@@ -1626,8 +1626,21 @@ const or = (e) => {
           /* @__PURE__ */ r(
             X,
             {
-              onClick: () => x(ge(/* @__PURE__ */ new Date(), p)),
+              onClick: () => D(pe(/* @__PURE__ */ new Date(), g)),
               "aria-label": a.navigation.today,
+              sx: {
+                borderRadius: "8px",
+                textTransform: "none",
+                fontWeight: 500,
+                fontSize: "14px",
+                padding: "6px 16px",
+                color: "#374151",
+                border: "1px solid #e5e7eb",
+                "&:hover": {
+                  backgroundColor: "#f9fafb",
+                  borderColor: "#d1d5db"
+                }
+              },
               children: a.navigation.today
             }
           ),
@@ -1645,27 +1658,53 @@ const or = (e) => {
               color: h ? "primary" : "default",
               style: { padding: 5 },
               onClick: c,
-              children: /* @__PURE__ */ r(Mn, {})
+              children: /* @__PURE__ */ r(Sn, {})
             }
           )),
-          D.length > 1 && (k ? D.map((_) => /* @__PURE__ */ r(
-            X,
+          x.length > 1 && (k ? /* @__PURE__ */ r(
+            "div",
             {
-              color: _ === t ? "primary" : "inherit",
-              onClick: () => T(_),
-              onDragOver: (S) => {
-                S.preventDefault(), T(_);
+              style: {
+                display: "inline-flex",
+                backgroundColor: "#f3f4f6",
+                borderRadius: "8px",
+                padding: "4px",
+                gap: "4px"
               },
-              children: a.navigation[_]
-            },
-            _
-          )) : /* @__PURE__ */ M(K, { children: [
+              children: x.map((m) => /* @__PURE__ */ r(
+                X,
+                {
+                  onClick: () => T(m),
+                  onDragOver: (M) => {
+                    M.preventDefault(), T(m);
+                  },
+                  sx: {
+                    borderRadius: "6px",
+                    textTransform: "none",
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    padding: "6px 16px",
+                    minWidth: "auto",
+                    transition: "all 0.2s ease",
+                    backgroundColor: m === t ? "#fff" : "transparent",
+                    color: m === t ? "#1d4ed8" : "#6b7280",
+                    boxShadow: m === t ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                    "&:hover": {
+                      backgroundColor: m === t ? "#fff" : "rgba(255,255,255,0.5)"
+                    }
+                  },
+                  children: a.navigation[m]
+                },
+                m
+              ))
+            }
+          ) : /* @__PURE__ */ S(K, { children: [
             /* @__PURE__ */ r(
               fe,
               {
                 style: { padding: 5 },
-                onClick: (_) => {
-                  C(_.currentTarget);
+                onClick: (m) => {
+                  C(m.currentTarget);
                 },
                 children: /* @__PURE__ */ r(En, {})
               }
@@ -1686,16 +1725,16 @@ const or = (e) => {
                   vertical: "top",
                   horizontal: "center"
                 },
-                children: /* @__PURE__ */ r(an, { autoFocusItem: !!l, disablePadding: !0, children: D.map((_) => /* @__PURE__ */ r(
+                children: /* @__PURE__ */ r(an, { autoFocusItem: !!l, disablePadding: !0, children: x.map((m) => /* @__PURE__ */ r(
                   Oe,
                   {
-                    selected: _ === t,
+                    selected: m === t,
                     onClick: () => {
-                      C(), T(_);
+                      C(), T(m);
                     },
-                    children: a.navigation[_]
+                    children: a.navigation[m]
                   },
-                  _
+                  m
                 )) })
               }
             )
@@ -1717,23 +1756,23 @@ const or = (e) => {
   required: d
 }) => {
   var w, l;
-  const { translations: g } = $(), [y, m] = P({
+  const { translations: p } = R(), [v, y] = P({
     touched: !1,
     valid: !!t,
-    errorMsg: u || (d ? ((w = g == null ? void 0 : g.validation) == null ? void 0 : w.required) || "Required" : void 0)
-  }), p = e === "date" ? Sn : In, h = y.touched && (s || !y.valid), c = U(
+    errorMsg: u || (d ? ((w = p == null ? void 0 : p.validation) == null ? void 0 : w.required) || "Required" : void 0)
+  }), g = e === "date" ? Mn : In, h = v.touched && (s || !v.valid), c = U(
     (b) => {
-      var x;
+      var D;
       const E = !isNaN(Date.parse(b)), k = typeof b == "string" && E ? new Date(b) : b;
-      let D = !0, C = u;
-      d && !k && (D = !1, C = u || ((x = g == null ? void 0 : g.validation) == null ? void 0 : x.required) || "Required"), m((T) => ({ ...T, touched: !0, valid: D, errorMsg: C })), o(i, k);
+      let x = !0, C = u;
+      d && !k && (x = !1, C = u || ((D = p == null ? void 0 : p.validation) == null ? void 0 : D.required) || "Required"), y((T) => ({ ...T, touched: !0, valid: x, errorMsg: C })), o(i, k);
     },
-    [u, i, o, d, (l = g == null ? void 0 : g.validation) == null ? void 0 : l.required]
+    [u, i, o, d, (l = p == null ? void 0 : p.validation) == null ? void 0 : l.required]
   );
   return ee(() => {
     f && c(t);
   }, [c, f, t]), /* @__PURE__ */ r(Fe, { children: /* @__PURE__ */ r(
-    p,
+    g,
     {
       value: t instanceof Date ? t : new Date(t),
       label: n,
@@ -1744,7 +1783,7 @@ const or = (e) => {
       slotProps: {
         textField: {
           variant: a,
-          helperText: h && y.errorMsg,
+          helperText: h && v.errorMsg,
           error: h,
           fullWidth: !0
         }
@@ -1762,24 +1801,24 @@ const or = (e) => {
   max: u,
   email: f,
   decimal: d,
-  onChange: g,
-  disabled: y,
-  multiline: m,
-  rows: p,
+  onChange: p,
+  disabled: v,
+  multiline: y,
+  rows: g,
   touched: h
 }) => {
   const [c, w] = P({
     touched: !1,
     valid: !1,
     errorMsg: ""
-  }), { translations: l } = $(), b = U(
+  }), { translations: l } = R(), b = U(
     (E) => {
-      var x, T, v, _, S, I, H, z, V;
+      var D, T, _, m, M, I, z, H, V;
       const k = E;
-      let D = !0, C = "";
-      f && (D = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(k) && D, C = ((x = l == null ? void 0 : l.validation) == null ? void 0 : x.invalidEmail) || "Invalid Email"), d && (D = /^[0-9]+(\.[0-9]*)?$/.test(k) && D, C = ((T = l == null ? void 0 : l.validation) == null ? void 0 : T.onlyNumbers) || "Only Numbers Allowed"), s && `${k}`.trim().length < s && (D = !1, C = typeof ((v = l == null ? void 0 : l.validation) == null ? void 0 : v.min) == "function" ? (_ = l == null ? void 0 : l.validation) == null ? void 0 : _.min(s) : ((S = l == null ? void 0 : l.validation) == null ? void 0 : S.min) || `Minimum ${s} letters`), u && `${k}`.trim().length > u && (D = !1, C = typeof ((I = l == null ? void 0 : l.validation) == null ? void 0 : I.max) == "function" ? (H = l == null ? void 0 : l.validation) == null ? void 0 : H.max(u) : ((z = l == null ? void 0 : l.validation) == null ? void 0 : z.max) || `Maximum ${u} letters`), a && `${k}`.trim().length <= 0 && (D = !1, C = ((V = l == null ? void 0 : l.validation) == null ? void 0 : V.required) || "Required"), w({ touched: !0, valid: D, errorMsg: C }), g(o, k, D);
+      let x = !0, C = "";
+      f && (x = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(k) && x, C = ((D = l == null ? void 0 : l.validation) == null ? void 0 : D.invalidEmail) || "Invalid Email"), d && (x = /^[0-9]+(\.[0-9]*)?$/.test(k) && x, C = ((T = l == null ? void 0 : l.validation) == null ? void 0 : T.onlyNumbers) || "Only Numbers Allowed"), s && `${k}`.trim().length < s && (x = !1, C = typeof ((_ = l == null ? void 0 : l.validation) == null ? void 0 : _.min) == "function" ? (m = l == null ? void 0 : l.validation) == null ? void 0 : m.min(s) : ((M = l == null ? void 0 : l.validation) == null ? void 0 : M.min) || `Minimum ${s} letters`), u && `${k}`.trim().length > u && (x = !1, C = typeof ((I = l == null ? void 0 : l.validation) == null ? void 0 : I.max) == "function" ? (z = l == null ? void 0 : l.validation) == null ? void 0 : z.max(u) : ((H = l == null ? void 0 : l.validation) == null ? void 0 : H.max) || `Maximum ${u} letters`), a && `${k}`.trim().length <= 0 && (x = !1, C = ((V = l == null ? void 0 : l.validation) == null ? void 0 : V.required) || "Required"), w({ touched: !0, valid: x, errorMsg: C }), p(o, k, x);
     },
-    [d, f, u, s, o, g, a, l == null ? void 0 : l.validation]
+    [d, f, u, s, o, p, a, l == null ? void 0 : l.validation]
   );
   return ee(() => {
     h && b(i);
@@ -1787,22 +1826,22 @@ const or = (e) => {
     ln,
     {
       variant: e,
-      label: t && /* @__PURE__ */ r(A, { variant: "body2", children: `${t} ${a ? "*" : ""}` }),
+      label: t && /* @__PURE__ */ r($, { variant: "body2", children: `${t} ${a ? "*" : ""}` }),
       value: i,
       name: o,
       onChange: (E) => b(E.target.value),
-      disabled: y,
+      disabled: v,
       error: c.touched && !c.valid,
       helperText: c.touched && !c.valid && c.errorMsg,
-      multiline: m,
-      rows: p,
+      multiline: y,
+      rows: g,
       style: { width: "100%" },
       InputProps: {
         placeholder: n || ""
       }
     }
   );
-}, gr = ({
+}, pr = ({
   options: e,
   value: t,
   name: n,
@@ -1813,30 +1852,30 @@ const or = (e) => {
   touched: u,
   variant: f = "outlined",
   loading: d,
-  multiple: g,
-  placeholder: y,
-  errMsg: m
+  multiple: p,
+  placeholder: v,
+  errMsg: y
 }) => {
   var E, k;
-  const p = Y(), { translations: h } = $(), [c, w] = P({
+  const g = Y(), { translations: h } = R(), [c, w] = P({
     touched: !1,
     valid: !!t,
-    errorMsg: m || (i ? ((E = h == null ? void 0 : h.validation) == null ? void 0 : E.required) || "Required" : void 0)
+    errorMsg: y || (i ? ((E = h == null ? void 0 : h.validation) == null ? void 0 : E.required) || "Required" : void 0)
   }), l = U(() => {
-    c.touched || w((D) => ({ ...D, touched: !0, errorMsg: m || D.errorMsg }));
-  }, [m, c.touched]), b = U(
-    (D) => {
-      var v;
-      const C = D;
-      let x = !0, T = m;
-      i && (g ? !C.length : !C) && (x = !1, T = m || ((v = h == null ? void 0 : h.validation) == null ? void 0 : v.required) || "Required"), w((_) => ({ ..._, touched: !0, valid: x, errorMsg: T })), o(n, C, x);
+    c.touched || w((x) => ({ ...x, touched: !0, errorMsg: y || x.errorMsg }));
+  }, [y, c.touched]), b = U(
+    (x) => {
+      var _;
+      const C = x;
+      let D = !0, T = y;
+      i && (p ? !C.length : !C) && (D = !1, T = y || ((_ = h == null ? void 0 : h.validation) == null ? void 0 : _.required) || "Required"), w((m) => ({ ...m, touched: !0, valid: D, errorMsg: T })), o(n, C, D);
     },
-    [m, g, n, o, i, (k = h == null ? void 0 : h.validation) == null ? void 0 : k.required]
+    [y, p, n, o, i, (k = h == null ? void 0 : h.validation) == null ? void 0 : k.required]
   );
   return ee(() => {
     u && b(t);
-  }, [b, u, t]), /* @__PURE__ */ M(Z, { children: [
-    /* @__PURE__ */ M(
+  }, [b, u, t]), /* @__PURE__ */ S(Z, { children: [
+    /* @__PURE__ */ S(
       sn,
       {
         variant: f || "outlined",
@@ -1844,47 +1883,47 @@ const or = (e) => {
         error: i && c.touched && !c.valid,
         disabled: s,
         children: [
-          a && /* @__PURE__ */ r(dn, { id: `input_${n}`, children: /* @__PURE__ */ r(A, { variant: "body2", children: `${a} ${i ? "*" : ""}` }) }),
-          /* @__PURE__ */ M(
+          a && /* @__PURE__ */ r(dn, { id: `input_${n}`, children: /* @__PURE__ */ r($, { variant: "body2", children: `${a} ${i ? "*" : ""}` }) }),
+          /* @__PURE__ */ S(
             cn,
             {
               label: a,
               labelId: `input_${n}`,
               value: t,
               onBlur: l,
-              onChange: (D) => b(D.target.value),
-              IconComponent: d ? () => /* @__PURE__ */ r(Dt, { size: 5 }) : Fn,
-              multiple: !!g,
+              onChange: (x) => b(x.target.value),
+              IconComponent: d ? () => /* @__PURE__ */ r(xt, { size: 5 }) : Fn,
+              multiple: !!p,
               classes: {
-                select: g === "chips" ? "flex__wrap" : void 0
+                select: p === "chips" ? "flex__wrap" : void 0
               },
-              renderValue: (D) => {
-                if (!D || D.length === 0)
+              renderValue: (x) => {
+                if (!x || x.length === 0)
                   return /* @__PURE__ */ r("em", { children: a });
                 const C = [];
-                if (g) {
-                  for (const x of e)
-                    D.includes(x.value) && C.push([x.text]);
-                  return g === "chips" ? C.map((x, T) => /* @__PURE__ */ r(hn, { label: x, style: { margin: "0 2px" }, color: "primary" }, `${x}_${T}`)) : C.join(",");
+                if (p) {
+                  for (const D of e)
+                    x.includes(D.value) && C.push([D.text]);
+                  return p === "chips" ? C.map((D, T) => /* @__PURE__ */ r(hn, { label: D, style: { margin: "0 2px" }, color: "primary" }, `${D}_${T}`)) : C.join(",");
                 } else {
-                  for (const x of e)
-                    D === x.value && C.push([x.text]);
+                  for (const D of e)
+                    x === D.value && C.push([D.text]);
                   return C.join(",");
                 }
               },
               children: [
-                y && /* @__PURE__ */ r(Oe, { value: "", children: /* @__PURE__ */ r("em", { children: y }) }),
-                e.map((D) => /* @__PURE__ */ M(Oe, { value: D.value, children: [
-                  g && /* @__PURE__ */ r(un, { checked: t.indexOf(D.value) > -1, color: "primary" }),
-                  D.text
-                ] }, D.id || D.value))
+                v && /* @__PURE__ */ r(Oe, { value: "", children: /* @__PURE__ */ r("em", { children: v }) }),
+                e.map((x) => /* @__PURE__ */ S(Oe, { value: x.value, children: [
+                  p && /* @__PURE__ */ r(un, { checked: t.indexOf(x.value) > -1, color: "primary" }),
+                  x.text
+                ] }, x.id || x.value))
               ]
             }
           )
         ]
       }
     ),
-    /* @__PURE__ */ r(fn, { style: { color: p.palette.error.main }, children: c.touched && !c.valid && c.errorMsg })
+    /* @__PURE__ */ r(fn, { style: { color: g.palette.error.main }, children: c.touched && !c.valid && c.errorMsg })
   ] });
 }, at = (e, t) => {
   var i;
@@ -1930,7 +1969,7 @@ const or = (e) => {
     },
     ...n
   };
-}, pr = () => {
+}, gr = () => {
   const {
     fields: e,
     dialog: t,
@@ -1942,71 +1981,71 @@ const or = (e) => {
     triggerLoading: u,
     onConfirm: f,
     customEditor: d,
-    confirmEvent: g,
-    dialogMaxWidth: y,
-    translations: m,
-    timeZone: p
-  } = $(), [h, c] = P(at(e, o || i)), [w, l] = P(!1), b = Y(), E = wt(b.breakpoints.down("sm")), k = (v, _, S) => {
+    confirmEvent: p,
+    dialogMaxWidth: v,
+    translations: y,
+    timeZone: g
+  } = R(), [h, c] = P(at(e, o || i)), [w, l] = P(!1), b = Y(), E = wt(b.breakpoints.down("sm")), k = (_, m, M) => {
     c((I) => ({
       ...I,
-      [v]: { ...I[v], value: _, validity: S }
+      [_]: { ...I[_], value: m, validity: M }
     }));
-  }, D = (v) => {
-    v && c(at(e)), n(!1);
+  }, x = (_) => {
+    _ && c(at(e)), n(!1);
   }, C = async () => {
-    let v = {};
-    for (const _ in h)
-      if (v[_] = h[_].value, !d && !h[_].validity)
+    let _ = {};
+    for (const m in h)
+      if (_[m] = h[m].value, !d && !h[m].validity)
         return l(!0);
     try {
-      u(!0), v.end = v.start >= v.end ? ae(v.start, ke(i == null ? void 0 : i.end, i == null ? void 0 : i.start)) : v.end;
-      const _ = o != null && o.event_id ? "edit" : "create";
-      f ? v = await f(v, _) : v.event_id = (o == null ? void 0 : o.event_id) || Date.now().toString(36) + Math.random().toString(36).slice(2), v.start = Pe(v.start, p), v.end = Pe(v.end, p), g(v, _), D(!0);
-    } catch (_) {
-      console.error(_);
+      u(!0), _.end = _.start >= _.end ? ae(_.start, ke(i == null ? void 0 : i.end, i == null ? void 0 : i.start)) : _.end;
+      const m = o != null && o.event_id ? "edit" : "create";
+      f ? _ = await f(_, m) : _.event_id = (o == null ? void 0 : o.event_id) || Date.now().toString(36) + Math.random().toString(36).slice(2), _.start = Pe(_.start, g), _.end = Pe(_.end, g), p(_, m), x(!0);
+    } catch (m) {
+      console.error(m);
     } finally {
       u(!1);
     }
-  }, x = (v) => {
-    var S, I, H;
-    const _ = h[v];
-    switch (_.type) {
+  }, D = (_) => {
+    var M, I, z;
+    const m = h[_];
+    switch (m.type) {
       case "input":
         return /* @__PURE__ */ r(
           fr,
           {
-            value: _.value,
-            name: v,
+            value: m.value,
+            name: _,
             onChange: k,
             touched: w,
-            ..._.config,
-            label: m.event[v] || ((S = _.config) == null ? void 0 : S.label)
+            ...m.config,
+            label: y.event[_] || ((M = m.config) == null ? void 0 : M.label)
           }
         );
       case "date":
         return /* @__PURE__ */ r(
           hr,
           {
-            value: _.value,
-            name: v,
+            value: m.value,
+            name: _,
             onChange: (...V) => k(...V, !0),
             touched: w,
-            ..._.config,
-            label: m.event[v] || ((I = _.config) == null ? void 0 : I.label)
+            ...m.config,
+            label: y.event[_] || ((I = m.config) == null ? void 0 : I.label)
           }
         );
       case "select":
-        const z = e.find((V) => V.name === v);
+        const H = e.find((V) => V.name === _);
         return /* @__PURE__ */ r(
-          gr,
+          pr,
           {
-            value: _.value,
-            name: v,
-            options: (z == null ? void 0 : z.options) || [],
+            value: m.value,
+            name: _,
+            options: (H == null ? void 0 : H.options) || [],
             onChange: k,
             touched: w,
-            ..._.config,
-            label: m.event[v] || ((H = _.config) == null ? void 0 : H.label)
+            ...m.config,
+            label: y.event[_] || ((z = m.config) == null ? void 0 : z.label)
           }
         );
       default:
@@ -2014,36 +2053,36 @@ const or = (e) => {
     }
   };
   return /* @__PURE__ */ r(
-    gn,
+    pn,
     {
       open: t,
       fullScreen: E,
-      maxWidth: y,
+      maxWidth: v,
       onClose: () => {
         n(!1);
       },
       children: (() => {
         if (d) {
-          const v = {
+          const _ = {
             state: h,
             close: () => n(!1),
-            loading: (_) => u(_),
+            loading: (m) => u(m),
             edited: o,
-            onConfirm: g,
+            onConfirm: p,
             [a.idField]: s
           };
-          return d(v);
+          return d(_);
         }
-        return /* @__PURE__ */ M(K, { children: [
-          /* @__PURE__ */ r(pn, { children: o ? m.form.editTitle : m.form.addTitle }),
-          /* @__PURE__ */ r(mn, { style: { overflowX: "hidden" }, children: /* @__PURE__ */ r(et, { container: !0, spacing: 2, children: Object.keys(h).map((v) => {
-            var S;
-            const _ = h[v];
-            return /* @__PURE__ */ r(et, { size: { sm: (S = _.config) == null ? void 0 : S.sm, xs: 12 }, children: x(v) }, v);
+        return /* @__PURE__ */ S(K, { children: [
+          /* @__PURE__ */ r(gn, { children: o ? y.form.editTitle : y.form.addTitle }),
+          /* @__PURE__ */ r(mn, { style: { overflowX: "hidden" }, children: /* @__PURE__ */ r(et, { container: !0, spacing: 2, children: Object.keys(h).map((_) => {
+            var M;
+            const m = h[_];
+            return /* @__PURE__ */ r(et, { size: { sm: (M = m.config) == null ? void 0 : M.sm, xs: 12 }, children: D(_) }, _);
           }) }) }),
-          /* @__PURE__ */ M(yn, { children: [
-            /* @__PURE__ */ r(X, { color: "inherit", fullWidth: !0, onClick: () => D(), children: m.form.cancel }),
-            /* @__PURE__ */ r(X, { color: "primary", fullWidth: !0, onClick: C, children: m.form.confirm })
+          /* @__PURE__ */ S(yn, { children: [
+            /* @__PURE__ */ r(X, { color: "inherit", fullWidth: !0, onClick: () => x(), children: y.form.cancel }),
+            /* @__PURE__ */ r(X, { color: "primary", fullWidth: !0, onClick: C, children: y.form.confirm })
           ] })
         ] });
       })()
@@ -2058,12 +2097,12 @@ const or = (e) => {
     selectedDate: s,
     translations: u,
     alwaysShowAgendaDays: f
-  } = $(), { disableGoToDay: d, headRenderer: g } = n, y = Ut(s), m = Array.from({ length: y }, (h, c) => c + 1), p = j(() => e.filter((h) => yt(h.start, s)), [e, s]);
-  return !f && !p.length ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Se, { children: m.map((h) => {
-    const c = new Date(s.getFullYear(), s.getMonth(), h), w = se({ dateLeft: c, timeZone: a }), l = xe(e, c);
-    return !f && !l.length ? null : /* @__PURE__ */ M("div", { className: `rs__agenda_row ${he(c) ? "rs__today_cell" : ""}`, children: [
-      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof g == "function" ? /* @__PURE__ */ r("div", { children: g({ day: c, events: e, resource: t }) }) : /* @__PURE__ */ r(
-        A,
+  } = R(), { disableGoToDay: d, headRenderer: p } = n, v = Ut(s), y = Array.from({ length: v }, (h, c) => c + 1), g = j(() => e.filter((h) => yt(h.start, s)), [e, s]);
+  return !f && !g.length ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Me, { children: y.map((h) => {
+    const c = new Date(s.getFullYear(), s.getMonth(), h), w = se({ dateLeft: c, timeZone: a }), l = De(e, c);
+    return !f && !l.length ? null : /* @__PURE__ */ S("div", { className: `rs__agenda_row ${he(c) ? "rs__today_cell" : ""}`, children: [
+      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof p == "function" ? /* @__PURE__ */ r("div", { children: p({ day: c, events: e, resource: t }) }) : /* @__PURE__ */ r(
+        $,
         {
           sx: { fontWeight: w ? "bold" : "inherit" },
           color: w ? "primary" : "inherit",
@@ -2075,7 +2114,7 @@ const or = (e) => {
           children: N(c, "dd E", { locale: o })
         }
       ) }),
-      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: l.length > 0 ? /* @__PURE__ */ r(je, { day: c, events: l }) : /* @__PURE__ */ r(A, { sx: { padding: 1 }, children: u.noDataToDisplay }) })
+      /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: l.length > 0 ? /* @__PURE__ */ r(je, { day: c, events: l }) : /* @__PURE__ */ r($, { sx: { padding: 1 }, children: u.noDataToDisplay }) })
     ] }, h);
   }) });
 }, yr = ({
@@ -2088,34 +2127,34 @@ const or = (e) => {
   onViewMore: s,
   cellHeight: u
 }) => {
-  const f = Math.round((u - it) / ce - 1), { translations: d, month: g, locale: y, timeZone: m } = $(), { renderedSlots: p } = Ot(), h = j(() => {
+  const f = Math.round((u - it) / ce - 1), { translations: d, month: p, locale: v, timeZone: y } = R(), { renderedSlots: g } = Ot(), h = j(() => {
     var w;
     const c = [];
     for (let l = 0; l < Math.min(e.length, f + 1); l++) {
-      const b = Ce(e[l], m), E = !!o && De(b.start, o), k = E && o ? o : b.start;
-      let D = le(k, b.end) + 1;
+      const b = Ce(e[l], y), E = !!o && xe(b.start, o), k = E && o ? o : b.start;
+      let x = le(k, b.end) + 1;
       const C = Zt(b.end, k, {
-        weekStartsOn: g == null ? void 0 : g.weekStartOn,
-        locale: y
+        weekStartsOn: p == null ? void 0 : p.weekStartOn,
+        locale: v
       }) > 0;
       if (C) {
-        const S = Ee(b.start, {
-          weekStartsOn: g == null ? void 0 : g.weekStartOn,
-          locale: y
-        }), I = qt(S, i);
-        I && (D = a.length - (o ? 0 : ht(b.start, I)));
+        const M = Ee(b.start, {
+          weekStartsOn: p == null ? void 0 : p.weekStartOn,
+          locale: v
+        }), I = qt(M, i);
+        I && (x = a.length - (o ? 0 : ht(b.start, I)));
       }
-      const x = N(n, "yyyy-MM-dd"), T = (w = p == null ? void 0 : p[t || "all"]) == null ? void 0 : w[x], v = (T == null ? void 0 : T[b.event_id]) || 0, _ = Math.min(v, f) * ce + it;
-      if (v >= f) {
+      const D = N(n, "yyyy-MM-dd"), T = (w = g == null ? void 0 : g[t || "all"]) == null ? void 0 : w[D], _ = (T == null ? void 0 : T[b.event_id]) || 0, m = Math.min(_, f) * ce + it;
+      if (_ >= f) {
         c.push(
           /* @__PURE__ */ r(
-            A,
+            $,
             {
               width: "100%",
               className: "rs__multi_day rs__hover__op",
-              style: { top: _, fontSize: 11 },
-              onClick: (S) => {
-                S.stopPropagation(), s(n);
+              style: { top: m, fontSize: 11 },
+              onClick: (M) => {
+                M.stopPropagation(), s(n);
               },
               children: `${Math.abs(e.length - l)} ${d.moreEvents}`
             },
@@ -2130,8 +2169,8 @@ const or = (e) => {
           {
             className: "rs__multi_day",
             style: {
-              top: _,
-              width: `${100 * D}%`,
+              top: m,
+              width: `${100 * x}%`,
               height: nr
             },
             children: /* @__PURE__ */ r(
@@ -2152,18 +2191,18 @@ const or = (e) => {
     return c;
   }, [
     t,
-    p,
+    g,
     e,
     f,
     o,
-    g == null ? void 0 : g.weekStartOn,
-    y,
+    p == null ? void 0 : p.weekStartOn,
+    v,
     n,
     i,
     a.length,
     d.moreEvents,
     s,
-    m
+    y
   ]);
   return /* @__PURE__ */ r(K, { children: h });
 }, vr = ({ daysList: e, resource: t, eachWeekStart: n }) => {
@@ -2175,38 +2214,38 @@ const or = (e) => {
     handleGotoDay: u,
     resourceFields: f,
     fields: d,
-    locale: g,
-    hourFormat: y,
-    stickyNavigation: m,
-    timeZone: p,
+    locale: p,
+    hourFormat: v,
+    stickyNavigation: y,
+    timeZone: g,
     onClickMore: h
-  } = $(), { weekDays: c, startHour: w, endHour: l, cellRenderer: b, headRenderer: E, disableGoToDay: k } = o, { headersRef: D, bodyRef: C } = $t(), x = Y(), T = Le(a), v = ye(y), _ = i / n.length, S = U(
+  } = R(), { weekDays: c, startHour: w, endHour: l, cellRenderer: b, headRenderer: E, disableGoToDay: k } = o, { headersRef: x, bodyRef: C } = Rt(), D = Y(), T = Le(a), _ = ye(v), m = i / n.length, M = U(
     (I) => {
-      let H = Me(s);
-      I && (H = be(s, I, f, d));
-      const z = [];
+      let z = Se(s);
+      I && (z = be(s, I, f, d));
+      const H = [];
       for (const V of n) {
-        const W = c.map((R) => {
-          const F = q(V, R), B = /* @__PURE__ */ new Date(`${N(Je(F, w), `yyyy/MM/dd ${v}`)}`), te = /* @__PURE__ */ new Date(`${N(Je(F, l), `yyyy/MM/dd ${v}`)}`), G = f.idField, ne = ue(V, F) ? F : null, O = H.flatMap((L) => Ct(L, F)).filter((L) => {
+        const W = c.map((A) => {
+          const F = q(V, A), B = /* @__PURE__ */ new Date(`${N(Je(F, w), `yyyy/MM/dd ${_}`)}`), te = /* @__PURE__ */ new Date(`${N(Je(F, l), `yyyy/MM/dd ${_}`)}`), G = f.idField, ne = ue(V, F) ? F : null, O = z.flatMap((L) => Ct(L, F)).filter((L) => {
             if (ue(L.start, F)) return !0;
             const Ne = { start: J(L.start), end: Q(L.end) };
             return !!(ne && oe(ne, Ne));
-          }), re = se({ dateLeft: F, timeZone: p });
-          return /* @__PURE__ */ M("span", { style: { height: _ }, className: "rs__cell", children: [
+          }), re = se({ dateLeft: F, timeZone: g });
+          return /* @__PURE__ */ S("span", { style: { height: m }, className: "rs__cell", children: [
             /* @__PURE__ */ r(
               Ze,
               {
                 start: B,
                 end: te,
                 day: a,
-                height: _,
+                height: m,
                 resourceKey: G,
                 resourceVal: I ? I[G] : null,
                 cellRenderer: b
               }
             ),
-            /* @__PURE__ */ M(K, { children: [
-              typeof E == "function" ? /* @__PURE__ */ r("div", { style: { position: "absolute", top: 0 }, children: E({ day: F, events: H, resource: I }) }) : /* @__PURE__ */ r(
+            /* @__PURE__ */ S(K, { children: [
+              typeof E == "function" ? /* @__PURE__ */ r("div", { style: { position: "absolute", top: 0 }, children: E({ day: F, events: z, resource: I }) }) : /* @__PURE__ */ r(
                 Ve,
                 {
                   style: {
@@ -2214,12 +2253,12 @@ const or = (e) => {
                     height: 27,
                     position: "absolute",
                     top: 0,
-                    background: re ? x.palette.secondary.main : "transparent",
-                    color: re ? x.palette.secondary.contrastText : "",
+                    background: re ? D.palette.secondary.main : "transparent",
+                    color: re ? D.palette.secondary.contrastText : "",
                     marginBottom: 2
                   },
                   children: /* @__PURE__ */ r(
-                    A,
+                    $,
                     {
                       color: yt(F, T) ? "textPrimary" : "#ccc",
                       className: k ? "" : "rs__hover__op",
@@ -2243,18 +2282,18 @@ const or = (e) => {
                   onViewMore: (L) => {
                     h && typeof h == "function" ? h(L, u) : u(L);
                   },
-                  cellHeight: _
+                  cellHeight: m
                 }
               )
             ] })
-          ] }, R.toString());
+          ] }, A.toString());
         });
-        z.push(/* @__PURE__ */ r(K, { children: W }, V.toString()));
+        H.push(/* @__PURE__ */ r(K, { children: W }, V.toString()));
       }
-      return z;
+      return H;
     },
     [
-      _,
+      m,
       b,
       e,
       k,
@@ -2262,7 +2301,7 @@ const or = (e) => {
       l,
       s,
       d,
-      v,
+      _,
       u,
       E,
       T,
@@ -2270,34 +2309,34 @@ const or = (e) => {
       f,
       a,
       w,
-      x.palette.secondary.contrastText,
-      x.palette.secondary.main,
-      p,
+      D.palette.secondary.contrastText,
+      D.palette.secondary.main,
+      g,
       c
     ]
   );
-  return /* @__PURE__ */ M(Z, { children: [
+  return /* @__PURE__ */ S(Z, { children: [
     /* @__PURE__ */ r(
-      pe,
+      ge,
       {
         days: e.length,
-        ref: D,
+        ref: x,
         indent: "0",
         sticky: "1",
-        stickyNavigation: m,
-        children: e.map((I, H) => /* @__PURE__ */ r(
-          A,
+        stickyNavigation: y,
+        children: e.map((I, z) => /* @__PURE__ */ r(
+          $,
           {
             className: "rs__cell rs__header rs__header__center",
             align: "center",
             variant: "body2",
-            children: N(I, "EE", { locale: g })
+            children: N(I, "EE", { locale: p })
           },
-          H
+          z
         ))
       }
     ),
-    /* @__PURE__ */ r(pe, { days: e.length, ref: C, indent: "0", children: S(t) })
+    /* @__PURE__ */ r(ge, { days: e.length, ref: C, indent: "0", children: M(t) })
   ] });
 }, _r = () => {
   const {
@@ -2311,13 +2350,13 @@ const or = (e) => {
     resourceFields: u,
     fields: f,
     agenda: d
-  } = $(), { weekStartOn: g, weekDays: y } = e, m = Le(t), p = pt(t), h = Xt(
+  } = R(), { weekStartOn: p, weekDays: v } = e, y = Le(t), g = gt(t), h = Xt(
     {
-      start: m,
-      end: p
+      start: y,
+      end: g
     },
-    { weekStartsOn: g }
-  ), c = y.map((b) => q(h[0], b)), w = U(async () => {
+    { weekStartsOn: p }
+  ), c = v.map((b) => q(h[0], b)), w = U(async () => {
     try {
       o(!0);
       const b = h[0], E = q(h[h.length - 1], c.length), k = await i({
@@ -2338,7 +2377,7 @@ const or = (e) => {
   const l = U(
     (b) => {
       if (d) {
-        let E = Me(n);
+        let E = Se(n);
         return b && (E = be(n, b, u, f)), /* @__PURE__ */ r(mr, { resource: b, events: E });
       }
       return /* @__PURE__ */ r(vr, { daysList: c, eachWeekStart: h, resource: b });
@@ -2347,10 +2386,10 @@ const or = (e) => {
   );
   return s.length ? /* @__PURE__ */ r(Ge, { renderChildren: l }) : l();
 }, br = ({ events: e, resource: t }) => {
-  const { day: n, locale: i, selectedDate: o, translations: a, alwaysShowAgendaDays: s } = $(), { headRenderer: u } = n, f = j(() => xe(e, o), [e, o]);
-  return !s && !f.length ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Se, { children: /* @__PURE__ */ M("div", { className: "rs__agenda_row rs__today_cell", children: [
-    /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof u == "function" ? /* @__PURE__ */ r("div", { children: u({ day: o, events: e, resource: t }) }) : /* @__PURE__ */ r(A, { variant: "body2", children: N(o, "dd E", { locale: i }) }) }),
-    /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: f.length > 0 ? /* @__PURE__ */ r(je, { day: o, events: f }) : /* @__PURE__ */ r(A, { sx: { padding: 1 }, children: a.noDataToDisplay }) })
+  const { day: n, locale: i, selectedDate: o, translations: a, alwaysShowAgendaDays: s } = R(), { headRenderer: u } = n, f = j(() => De(e, o), [e, o]);
+  return !s && !f.length ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Me, { children: /* @__PURE__ */ S("div", { className: "rs__agenda_row rs__today_cell", children: [
+    /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof u == "function" ? /* @__PURE__ */ r("div", { children: u({ day: o, events: e, resource: t }) }) : /* @__PURE__ */ r($, { variant: "body2", children: N(o, "dd E", { locale: i }) }) }),
+    /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda_items", children: f.length > 0 ? /* @__PURE__ */ r(je, { day: o, events: f }) : /* @__PURE__ */ r($, { sx: { padding: 1 }, children: a.noDataToDisplay }) })
   ] }) });
 }, wr = () => {
   const {
@@ -2364,25 +2403,25 @@ const or = (e) => {
     resources: u,
     resourceFields: f,
     resourceViewMode: d,
-    fields: g,
-    direction: y,
-    locale: m,
-    hourFormat: p,
+    fields: p,
+    direction: v,
+    locale: y,
+    hourFormat: g,
     timeZone: h,
     stickyNavigation: c,
     agenda: w
-  } = $(), { startHour: l, endHour: b, step: E, cellRenderer: k, headRenderer: D, hourRenderer: C } = e, x = ve(t, { hours: l, minutes: 0, seconds: 0 }), T = ve(t, { hours: b, minutes: -E, seconds: 0 }), v = gt(
+  } = R(), { startHour: l, endHour: b, step: E, cellRenderer: k, headRenderer: x, hourRenderer: C } = e, D = ve(t, { hours: l, minutes: 0, seconds: 0 }), T = ve(t, { hours: b, minutes: -E, seconds: 0 }), _ = pt(
     {
-      start: x,
+      start: D,
       end: T
     },
     { step: E }
-  ), _ = Tt(i, v.length), S = xt(_, E), I = ye(p), H = U(async () => {
+  ), m = Tt(i, _.length), M = Dt(m, E), I = ye(g), z = U(async () => {
     try {
       a(!0);
-      const W = q(x, -1), R = q(T, 1), F = await o({
+      const W = q(D, -1), A = q(T, 1), F = await o({
         start: W,
-        end: R,
+        end: A,
         view: "day"
       });
       F && (F != null && F.length) && s(F, "events");
@@ -2393,18 +2432,18 @@ const or = (e) => {
     }
   }, [o]);
   ee(() => {
-    o instanceof Function && H();
-  }, [H, o]);
-  const z = U(
+    o instanceof Function && z();
+  }, [z, o]);
+  const H = U(
     (W) => {
-      const R = Te(W, t, h);
+      const A = Te(W, t, h);
       return /* @__PURE__ */ r(
         "div",
         {
           className: "rs__block_col",
-          style: { height: ce * R.length },
-          children: R.map((F, B) => {
-            const te = De(F.start, J(t)), G = ft(F.end, Q(t));
+          style: { height: ce * A.length },
+          children: A.map((F, B) => {
+            const te = xe(F.start, J(t)), G = ft(F.end, Q(t));
             return /* @__PURE__ */ r(
               "div",
               {
@@ -2425,44 +2464,44 @@ const or = (e) => {
     [t, h]
   ), V = U(
     (W) => {
-      let R = n;
-      if (W && (R = be(n, W, f, g)), w)
-        return /* @__PURE__ */ r(br, { resource: W, events: R });
+      let A = n;
+      if (W && (A = be(n, W, f, p)), w)
+        return /* @__PURE__ */ r(br, { resource: W, events: A });
       const F = u.length && d === "default", B = Te(
-        F ? n : R,
+        F ? n : A,
         t,
         h
       ), te = ce * B.length + 45;
-      return /* @__PURE__ */ M(Z, { children: [
-        /* @__PURE__ */ M(pe, { days: 1, sticky: "1", stickyNavigation: c, children: [
+      return /* @__PURE__ */ S(Z, { children: [
+        /* @__PURE__ */ S(ge, { days: 1, sticky: "1", stickyNavigation: c, children: [
           /* @__PURE__ */ r("span", { className: "rs__cell" }),
-          /* @__PURE__ */ M(
+          /* @__PURE__ */ S(
             "span",
             {
               className: `rs__cell rs__header ${he(t) ? "rs__today_cell" : ""}`,
               style: { height: te },
               children: [
-                typeof D == "function" ? /* @__PURE__ */ r("div", { children: D({ day: t, events: R, resource: W }) }) : /* @__PURE__ */ r(At, { date: t, locale: m }),
-                z(R)
+                typeof x == "function" ? /* @__PURE__ */ r("div", { children: x({ day: t, events: A, resource: W }) }) : /* @__PURE__ */ r($t, { date: t, locale: y }),
+                H(A)
               ]
             }
           )
         ] }),
-        /* @__PURE__ */ r(pe, { days: 1, children: v.map((G, ne) => {
+        /* @__PURE__ */ r(ge, { days: 1, children: _.map((G, ne) => {
           const O = /* @__PURE__ */ new Date(`${N(t, "yyyy/MM/dd")} ${N(G, I)}`), re = ae(O, E), L = f.idField;
-          return /* @__PURE__ */ M(K, { children: [
-            /* @__PURE__ */ r("span", { className: "rs__cell rs__header rs__time", style: { height: _ }, children: typeof C == "function" ? /* @__PURE__ */ r("div", { children: C(N(G, I, { locale: m })) }) : /* @__PURE__ */ r(A, { variant: "caption", children: N(G, I, { locale: m }) }) }),
-            /* @__PURE__ */ M("span", { className: `rs__cell ${he(t) ? "rs__today_cell" : ""}`, children: [
+          return /* @__PURE__ */ S(K, { children: [
+            /* @__PURE__ */ r("span", { className: "rs__cell rs__header rs__time", style: { height: m }, children: typeof C == "function" ? /* @__PURE__ */ r("div", { children: C(N(G, I, { locale: y })) }) : /* @__PURE__ */ r($, { variant: "caption", children: N(G, I, { locale: y }) }) }),
+            /* @__PURE__ */ S("span", { className: `rs__cell ${he(t) ? "rs__today_cell" : ""}`, children: [
               ne === 0 && /* @__PURE__ */ r(
                 Wt,
                 {
-                  todayEvents: kt(R, t, h),
-                  today: x,
-                  minuteHeight: S,
+                  todayEvents: kt(A, t, h),
+                  today: D,
+                  minuteHeight: M,
                   startHour: l,
                   endHour: b,
                   step: E,
-                  direction: y,
+                  direction: v,
                   timeZone: h
                 }
               ),
@@ -2472,7 +2511,7 @@ const or = (e) => {
                   start: O,
                   end: re,
                   day: t,
-                  height: _,
+                  height: m,
                   resourceKey: L,
                   resourceVal: W ? W[L] : null,
                   cellRenderer: k
@@ -2484,21 +2523,21 @@ const or = (e) => {
       ] });
     },
     [
-      _,
-      S,
-      x,
+      m,
+      M,
+      D,
       w,
       k,
-      y,
+      v,
       b,
       n,
-      g,
+      p,
       I,
-      D,
+      x,
       C,
-      v,
-      m,
-      z,
+      _,
+      y,
+      H,
       f,
       d,
       u.length,
@@ -2529,7 +2568,7 @@ const or = (e) => {
   }
   return t;
 }, st = (e, t, n, i, o) => {
-  const a = o === "month" ? Et(e) : Me(e), s = {};
+  const a = o === "month" ? Et(e) : Se(e), s = {};
   if (t.length)
     for (const u of t) {
       const f = be(a, u, n, i), d = lt(f);
@@ -2538,8 +2577,8 @@ const or = (e) => {
   else
     s.all = lt(a);
   return s;
-}, Dr = ({ children: e }) => {
-  const { events: t, resources: n, resourceFields: i, fields: o, view: a } = $(), [s, u] = P({
+}, xr = ({ children: e }) => {
+  const { events: t, resources: n, resourceFields: i, fields: o, view: a } = R(), [s, u] = P({
     renderedSlots: st(t, n, i, o, a)
   });
   ee(() => {
@@ -2554,26 +2593,26 @@ const or = (e) => {
       )
     }));
   }, [t, o, i, n, a]);
-  const f = (d, g, y, m) => {
-    u((p) => {
+  const f = (d, p, v, y) => {
+    u((g) => {
       var h, c, w, l, b;
       return {
-        ...p,
+        ...g,
         renderedSlots: {
-          ...p.renderedSlots,
-          [m || "all"]: {
-            ...(h = p.renderedSlots) == null ? void 0 : h[m || "all"],
-            [d]: (w = (c = p.renderedSlots) == null ? void 0 : c[m || "all"]) != null && w[d] ? {
-              ...(b = (l = p.renderedSlots) == null ? void 0 : l[m || "all"]) == null ? void 0 : b[d],
-              [g]: y
-            } : { [g]: y }
+          ...g.renderedSlots,
+          [y || "all"]: {
+            ...(h = g.renderedSlots) == null ? void 0 : h[y || "all"],
+            [d]: (w = (c = g.renderedSlots) == null ? void 0 : c[y || "all"]) != null && w[d] ? {
+              ...(b = (l = g.renderedSlots) == null ? void 0 : l[y || "all"]) == null ? void 0 : b[d],
+              [p]: v
+            } : { [p]: v }
           }
         }
       };
     });
   };
   return /* @__PURE__ */ r(
-    Rt.Provider,
+    At.Provider,
     {
       value: {
         ...s,
@@ -2582,8 +2621,8 @@ const or = (e) => {
       children: e
     }
   );
-}, xr = ut(function(t, n) {
-  const i = $(), { view: o, dialog: a, loading: s, loadingComponent: u, resourceViewMode: f, resources: d, translations: g } = i, y = j(() => {
+}, Dr = ut(function(t, n) {
+  const i = R(), { view: o, dialog: a, loading: s, loadingComponent: u, resourceViewMode: f, resources: d, translations: p } = i, v = j(() => {
     switch (o) {
       case "month":
         return /* @__PURE__ */ r(_r, {});
@@ -2594,24 +2633,24 @@ const or = (e) => {
       default:
         return "";
     }
-  }, [o]), m = j(() => /* @__PURE__ */ r("div", { className: "rs__table_loading", children: u || /* @__PURE__ */ r("div", { className: "rs__table_loading_internal", children: /* @__PURE__ */ M("span", { children: [
-    /* @__PURE__ */ r(Dt, { size: 50 }),
-    /* @__PURE__ */ r(A, { align: "center", children: g.loading })
-  ] }) }) }), [u, g.loading]);
-  return /* @__PURE__ */ M(
+  }, [o]), y = j(() => /* @__PURE__ */ r("div", { className: "rs__table_loading", children: u || /* @__PURE__ */ r("div", { className: "rs__table_loading_internal", children: /* @__PURE__ */ S("span", { children: [
+    /* @__PURE__ */ r(xt, { size: 50 }),
+    /* @__PURE__ */ r($, { align: "center", children: p.loading })
+  ] }) }) }), [u, p.loading]);
+  return /* @__PURE__ */ S(
     qn,
     {
       dialog: a ? 1 : 0,
       "data-testid": "rs-wrapper",
-      ref: (p) => {
+      ref: (g) => {
         const h = n;
         h && (h.current = {
-          el: p,
+          el: g,
           scheduler: i
         });
       },
       children: [
-        s ? m : null,
+        s ? y : null,
         /* @__PURE__ */ r(ur, {}),
         /* @__PURE__ */ r(
           Xn,
@@ -2622,37 +2661,37 @@ const or = (e) => {
               flexDirection: f === "vertical" ? "column" : void 0
             },
             "data-testid": "grid",
-            children: /* @__PURE__ */ r(Dr, { children: y })
+            children: /* @__PURE__ */ r(xr, { children: v })
           }
         ),
-        a && /* @__PURE__ */ r(pr, {})
+        a && /* @__PURE__ */ r(gr, {})
       ]
     }
   );
 }), Tr = ({ children: e, initial: t }) => {
-  const [n, i] = P({ ...St, ...Mt(t) });
+  const [n, i] = P({ ...Mt, ...St(t) });
   ee(() => {
-    i((p) => ({
-      ...p,
+    i((g) => ({
+      ...g,
       onEventDrop: t.onEventDrop,
       customEditor: t.customEditor,
       events: t.events || []
     }));
   }, [t.onEventDrop, t.customEditor, t.events]);
-  const o = (p, h) => {
-    i((c) => ({ ...c, [h]: p }));
-  }, a = () => $n(n), s = () => {
-    i((p) => {
-      const h = !p.agenda;
-      return n.onViewChange && typeof n.onViewChange == "function" && n.onViewChange(n.view, h), { ...p, agenda: h };
+  const o = (g, h) => {
+    i((c) => ({ ...c, [h]: g }));
+  }, a = () => Rn(n), s = () => {
+    i((g) => {
+      const h = !g.agenda;
+      return n.onViewChange && typeof n.onViewChange == "function" && n.onViewChange(n.view, h), { ...g, agenda: h };
     });
-  }, u = (p, h) => {
+  }, u = (g, h) => {
     const c = h;
     i((w) => {
       var l;
       return {
         ...w,
-        dialog: p,
+        dialog: g,
         selectedRange: c != null && c.event_id ? void 0 : c || {
           start: /* @__PURE__ */ new Date(),
           end: new Date(Date.now() + 3600 * 1e3)
@@ -2661,51 +2700,51 @@ const or = (e) => {
         selectedResource: c == null ? void 0 : c[(l = n.resourceFields) == null ? void 0 : l.idField]
       };
     });
-  }, f = (p) => {
-    typeof t.loading > "u" && i((h) => ({ ...h, loading: p }));
-  }, d = (p) => {
+  }, f = (g) => {
+    typeof t.loading > "u" && i((h) => ({ ...h, loading: g }));
+  }, d = (g) => {
     const h = a();
     let c;
-    h.includes("day") ? (c = "day", i((w) => ({ ...w, view: "day", selectedDate: p }))) : h.includes("week") ? (c = "week", i((w) => ({ ...w, view: "week", selectedDate: p }))) : console.warn("No Day/Week views available"), c && n.onViewChange && typeof n.onViewChange == "function" && n.onViewChange(c, n.agenda), c && n.onSelectedDateChange && typeof n.onSelectedDateChange == "function" && n.onSelectedDateChange(p);
-  }, g = (p, h) => {
+    h.includes("day") ? (c = "day", i((w) => ({ ...w, view: "day", selectedDate: g }))) : h.includes("week") ? (c = "week", i((w) => ({ ...w, view: "week", selectedDate: g }))) : console.warn("No Day/Week views available"), c && n.onViewChange && typeof n.onViewChange == "function" && n.onViewChange(c, n.agenda), c && n.onSelectedDateChange && typeof n.onSelectedDateChange == "function" && n.onSelectedDateChange(g);
+  }, p = (g, h) => {
     let c;
-    h === "edit" ? Array.isArray(p) ? c = n.events.map((w) => {
-      const l = p.find((b) => b.event_id === w.event_id);
+    h === "edit" ? Array.isArray(g) ? c = n.events.map((w) => {
+      const l = g.find((b) => b.event_id === w.event_id);
       return l ? { ...w, ...l } : w;
     }) : c = n.events.map(
-      (w) => w.event_id === p.event_id ? { ...w, ...p } : w
-    ) : c = n.events.concat(p), i((w) => ({ ...w, events: c }));
-  }, y = (p) => {
-    i((h) => ({ ...h, currentDragged: p }));
-  }, m = async (p, h, c, w, l) => {
+      (w) => w.event_id === g.event_id ? { ...w, ...g } : w
+    ) : c = n.events.concat(g), i((w) => ({ ...w, events: c }));
+  }, v = (g) => {
+    i((h) => ({ ...h, currentDragged: g }));
+  }, y = async (g, h, c, w, l) => {
     var T;
-    const b = n.events.find((v) => typeof v.event_id == "number" ? v.event_id === +h : v.event_id === h), E = n.fields.find((v) => v.name === w), k = !!((T = E == null ? void 0 : E.config) != null && T.multiple);
-    let D = l;
+    const b = n.events.find((_) => typeof _.event_id == "number" ? _.event_id === +h : _.event_id === h), E = n.fields.find((_) => _.name === w), k = !!((T = E == null ? void 0 : E.config) != null && T.multiple);
+    let x = l;
     if (E) {
-      const v = b[w], _ = We(E, v, b).value;
+      const _ = b[w], m = We(E, _, b).value;
       if (k)
-        if (_.includes(l)) {
+        if (m.includes(l)) {
           if (Ke(b.start, c))
             return;
-          D = _;
+          x = m;
         } else
-          D = _.length > 1 ? [..._, l] : [l];
+          x = m.length > 1 ? [...m, l] : [l];
     }
-    if (Ke(b.start, c) && (!D || !k && D === b[w]))
+    if (Ke(b.start, c) && (!x || !k && x === b[w]))
       return;
-    const C = ke(b.end, b.start), x = {
+    const C = ke(b.end, b.start), D = {
       ...b,
       start: c,
       end: ae(c, C),
       recurring: void 0,
-      [w]: D || ""
+      [w]: x || ""
     };
     if (!n.onEventDrop || typeof n.onEventDrop != "function")
-      return g(x, "edit");
+      return p(D, "edit");
     try {
       f(!0);
-      const v = await n.onEventDrop(p, c, x, b);
-      v && g(v, "edit");
+      const _ = await n.onEventDrop(g, c, D, b);
+      _ && p(_, "edit");
     } finally {
       f(!1);
     }
@@ -2721,15 +2760,15 @@ const or = (e) => {
         triggerDialog: u,
         triggerLoading: f,
         handleGotoDay: d,
-        confirmEvent: g,
-        setCurrentDragged: y,
-        onDrop: m
+        confirmEvent: p,
+        setCurrentDragged: v,
+        onDrop: y
       },
       children: e
     }
   );
 }, qr = ut(function(t, n) {
-  return /* @__PURE__ */ r(Tr, { initial: t, children: /* @__PURE__ */ r(xr, { ref: n }) });
+  return /* @__PURE__ */ r(Tr, { initial: t, children: /* @__PURE__ */ r(Dr, { ref: n }) });
 });
 export {
   qr as Scheduler

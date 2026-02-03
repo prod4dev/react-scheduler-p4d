@@ -108,6 +108,19 @@ const Navigation = () => {
         <Button
           onClick={() => handleSelectedDateChange(getTimeZonedDate(new Date(), timeZone))}
           aria-label={translations.navigation.today}
+          sx={{
+            borderRadius: "8px",
+            textTransform: "none",
+            fontWeight: 500,
+            fontSize: "14px",
+            padding: "6px 16px",
+            color: "#374151",
+            border: "1px solid #e5e7eb",
+            "&:hover": {
+              backgroundColor: "#f9fafb",
+              borderColor: "#d1d5db",
+            },
+          }}
         >
           {translations.navigation.today}
         </Button>
@@ -132,19 +145,43 @@ const Navigation = () => {
 
         {views.length > 1 &&
           (isDesktop ? (
-            views.map((v) => (
-              <Button
-                key={v}
-                color={v === view ? "primary" : "inherit"}
-                onClick={() => handleChangeView(v)}
-                onDragOver={(e) => {
-                  e.preventDefault();
-                  handleChangeView(v);
-                }}
-              >
-                {translations.navigation[v]}
-              </Button>
-            ))
+            <div
+              style={{
+                display: "inline-flex",
+                backgroundColor: "#f3f4f6",
+                borderRadius: "8px",
+                padding: "4px",
+                gap: "4px",
+              }}
+            >
+              {views.map((v) => (
+                <Button
+                  key={v}
+                  onClick={() => handleChangeView(v)}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    handleChangeView(v);
+                  }}
+                  sx={{
+                    borderRadius: "6px",
+                    textTransform: "none",
+                    fontWeight: 500,
+                    fontSize: "14px",
+                    padding: "6px 16px",
+                    minWidth: "auto",
+                    transition: "all 0.2s ease",
+                    backgroundColor: v === view ? "#fff" : "transparent",
+                    color: v === view ? "#1d4ed8" : "#6b7280",
+                    boxShadow: v === view ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
+                    "&:hover": {
+                      backgroundColor: v === view ? "#fff" : "rgba(255,255,255,0.5)",
+                    },
+                  }}
+                >
+                  {translations.navigation[v]}
+                </Button>
+              ))}
+            </div>
           ) : (
             <Fragment>
               <IconButton
