@@ -1,6 +1,6 @@
 import { Fragment, MouseEvent, useCallback, useMemo, useState } from "react";
 import { Typography, ButtonBase, useTheme } from "@mui/material";
-import { format } from "date-fns";
+import { format, differenceInMinutes } from "date-fns";
 import { ProcessedEvent } from "../../types";
 import ArrowRightRoundedIcon from "@mui/icons-material/ArrowRightRounded";
 import ArrowLeftRoundedIcon from "@mui/icons-material/ArrowLeftRounded";
@@ -58,25 +58,48 @@ const EventItem = ({ event, multiday, hasPrev, hasNext, showdate = true }: Event
       }
     }
 
-    let item = (
-      <div style={{ padding: "2px 6px" }}>
-        <Typography variant="subtitle2" style={{ fontSize: 12 }} noWrap>
-          {event.title}
-        </Typography>
-        {event.subtitle && (
-          <Typography variant="body2" style={{ fontSize: 11 }} noWrap>
-            {event.subtitle}
+    // Calcular duración en minutos
+    const durationMinutes = differenceInMinutes(event.end, event.start);
+
+    let item;
+    if (durationMinutes < 30) {
+      // Menos de 30 min: solo título
+      item = (
+        <div style={{ padding: "2px 6px" }}>
+          <Typography variant="subtitle2" style={{ fontSize: 12 }} noWrap>
+            {event.title}
           </Typography>
-        )}
-        {showdate && (
-          <Typography style={{ fontSize: 11 }} noWrap>
-            {`${format(event.start, hFormat, {
-              locale,
-            })} - ${format(event.end, hFormat, { locale })}`}
+        </div>
+      );
+    } else if (durationMinutes === 30) {
+      // 30 min exactos: título, coma, horario inicio
+      item = (
+        <div style={{ padding: "2px 6px" }}>
+          <Typography variant="subtitle2" style={{ fontSize: 12 }} noWrap>
+            {event.title}, {format(event.start, hFormat, { locale })}
           </Typography>
-        )}
-      </div>
-    );
+        </div>
+      );
+    } else {
+      // Más de 30 min: título, debajo horario inicio-fin y descripción
+      item = (
+        <div style={{ padding: "2px 6px" }}>
+          <Typography variant="subtitle2" style={{ fontSize: 12 }} noWrap>
+            {event.title}
+          </Typography>
+          {showdate && (
+            <Typography style={{ fontSize: 11 }} noWrap>
+              {`${format(event.start, hFormat, { locale })} - ${format(event.end, hFormat, { locale })}`}
+            </Typography>
+          )}
+          {event.subtitle && (
+            <Typography variant="body2" style={{ fontSize: 11 }} noWrap>
+              {event.subtitle}
+            </Typography>
+          )}
+        </div>
+      );
+    }
     if (multiday) {
       item = (
         <div
