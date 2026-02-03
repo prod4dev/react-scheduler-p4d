@@ -313,6 +313,18 @@ export interface SchedulerProps {
      *
      */
     onCellClick?(start: Date, end: Date, resourceKey?: string, resourceVal?: string | number): void;
+    /**
+     * Function to determine if a cell should be disabled
+     */
+    isCellDisabled?(start: Date, end: Date, resourceKey?: string, resourceVal?: string | number): boolean;
+    /**
+     * Label for disabled cells
+     */
+    disabledCellLabel?: string;
+    /**
+     * Label for available cells
+     */
+    availableCellLabel?: string;
 }
 export interface SchedulerRef {
     el: HTMLDivElement;

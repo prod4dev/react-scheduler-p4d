@@ -38,6 +38,9 @@ export declare const defaultProps: (props: Partial<SchedulerProps>) => {
     stickyNavigation?: boolean | undefined;
     onClickMore?: ((date: Date, gotToDay: (date: Date) => void) => void) | undefined;
     onCellClick?: ((start: Date, end: Date, resourceKey?: string, resourceVal?: string | number) => void) | undefined;
+    isCellDisabled: ((start: Date, end: Date, resourceKey?: string, resourceVal?: string | number) => boolean) | undefined;
+    disabledCellLabel: string;
+    availableCellLabel: string;
     translations: {
         moreEvents: string;
         loading: string;
@@ -160,6 +163,9 @@ export declare const initialStore: {
     stickyNavigation?: boolean | undefined;
     onClickMore?: ((date: Date, gotToDay: (date: Date) => void) => void) | undefined;
     onCellClick?: ((start: Date, end: Date, resourceKey?: string, resourceVal?: string | number) => void) | undefined;
+    isCellDisabled: ((start: Date, end: Date, resourceKey?: string, resourceVal?: string | number) => boolean) | undefined;
+    disabledCellLabel: string;
+    availableCellLabel: string;
     translations: {
         moreEvents: string;
         loading: string;

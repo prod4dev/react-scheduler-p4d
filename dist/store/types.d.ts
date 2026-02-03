@@ -13,6 +13,9 @@ export interface SchedulerState extends SchedulerProps {
     selectedTab?: DefaultResource["assignee"];
     currentDragged?: ProcessedEvent;
     enableAgenda?: boolean;
+    isCellDisabled?(start: Date, end: Date, resourceKey?: string, resourceVal?: string | number): boolean;
+    disabledCellLabel?: string;
+    availableCellLabel?: string;
 }
 export interface Store extends SchedulerState {
     handleState(value: SchedulerState[keyof SchedulerState], name: keyof SchedulerState): void;

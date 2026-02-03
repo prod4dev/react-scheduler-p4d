@@ -132,6 +132,9 @@ export const defaultProps = (props: Partial<SchedulerProps>) => {
     draggable: true,
     agenda,
     enableAgenda: typeof agenda === "undefined" || agenda,
+    isCellDisabled: undefined,
+    disabledCellLabel: "Not available",
+    availableCellLabel: "Available",
     ...otherProps,
   };
 };
