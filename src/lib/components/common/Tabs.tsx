@@ -26,13 +26,21 @@ const StyledTaps = styled("div")(({ theme }: { theme: Theme }) => ({
   backgroundColor: theme.palette.background.paper,
   alignSelf: "center",
   "& .tabs": {
-    borderColor: theme.palette.grey[300],
+    borderColor: theme.palette.grey[200],
     borderStyle: "solid",
     borderWidth: 1,
+    borderRadius: "8px",
+    minHeight: "auto",
     "& button.MuiTab-root": {
-      borderColor: theme.palette.grey[300],
+      borderColor: theme.palette.grey[200],
       borderRightStyle: "solid",
       borderWidth: 1,
+      minHeight: "48px",
+      padding: "4px 12px",
+      textTransform: "none",
+      "&:last-child": {
+        borderRight: "none",
+      },
     },
   },
   "& .primary": {
@@ -96,7 +104,7 @@ const ButtonTabs = ({
           <Tab
             key={tab.id || i}
             label={tab.label}
-            sx={{ flex: 1, flexBasis: 200, flexShrink: 0 }}
+            sx={{ flex: 1, flexBasis: 140, flexShrink: 0, minWidth: "auto" }}
             value={tab.id}
             {...a11yProps(tab.id)}
             onClick={() => setTab(tab.id)}

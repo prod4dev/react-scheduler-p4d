@@ -28,10 +28,11 @@ const ResourceHeader = ({ resource }: ResourceHeaderProps) => {
   return (
     <ListItem
       sx={{
-        padding: "2px 10px",
+        padding: resourceViewMode === "tabs" ? "0 8px" : "2px 10px",
         textAlign: direction === "rtl" ? "right" : "left",
+        minWidth: "auto",
         ...(resourceViewMode === "tabs"
-          ? {}
+          ? { gap: 1 }
           : resourceViewMode === "vertical"
             ? {
                 display: "block",
@@ -47,23 +48,40 @@ const ResourceHeader = ({ resource }: ResourceHeaderProps) => {
       }}
       component="div"
     >
-      <ListItemAvatar>
-        <Avatar sx={{ background: color, margin: "auto" }} alt={text} src={avatar} />
+      <ListItemAvatar sx={{ minWidth: resourceViewMode === "tabs" ? 32 : 56 }}>
+        <Avatar
+          sx={{
+            background: color,
+            margin: "auto",
+            width: resourceViewMode === "tabs" ? 28 : 40,
+            height: resourceViewMode === "tabs" ? 28 : 40,
+            fontSize: resourceViewMode === "tabs" ? 12 : 16,
+          }}
+          alt={text}
+          src={avatar}
+        />
       </ListItemAvatar>
       <ListItemText
+        sx={{ margin: 0 }}
         primary={
-          <Typography variant="body2" noWrap={resourceViewMode !== "vertical"}>
+          <Typography
+            variant="body2"
+            noWrap={resourceViewMode !== "vertical"}
+            sx={{ fontSize: resourceViewMode === "tabs" ? 13 : 14, fontWeight: 500 }}
+          >
             {text}
           </Typography>
         }
         secondary={
-          <Typography
-            variant="caption"
-            color="textSecondary"
-            noWrap={resourceViewMode !== "vertical"}
-          >
-            {subtext}
-          </Typography>
+          resourceViewMode !== "tabs" && (
+            <Typography
+              variant="caption"
+              color="textSecondary"
+              noWrap={resourceViewMode !== "vertical"}
+            >
+              {subtext}
+            </Typography>
+          )
         }
       />
     </ListItem>
