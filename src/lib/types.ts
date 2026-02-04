@@ -290,6 +290,10 @@ export interface SchedulerProps {
    * @default "default"
    */
   resourceViewMode: "default" | "vertical" | "tabs";
+  /**
+   * Selected resource tab ID (for tabs mode)
+   */
+  selectedTab?: string | number;
   /**Direction of table */
   direction: "rtl" | "ltr";
   /**Editor dialog maxWith

@@ -109,6 +109,7 @@ export declare const defaultProps: (props: Partial<SchedulerProps>) => {
     hourFormat: "12" | "24";
     agenda: boolean | undefined;
     enableAgenda: boolean;
+    selectedTab: string | number | undefined;
 };
 export declare const initialStore: {
     setProps: () => void;
@@ -116,6 +117,7 @@ export declare const initialStore: {
     selectedRange: undefined;
     selectedEvent: undefined;
     selectedResource: undefined;
+    selectedTab: undefined;
     handleState: () => void;
     getViews: () => never[];
     toggleAgenda: () => void;

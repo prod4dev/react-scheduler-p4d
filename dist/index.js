@@ -40,8 +40,8 @@ const Rn = (e) => {
   var f;
   const o = n.idField, a = i.find((d) => d.name === o), s = !!((f = a == null ? void 0 : a.config) != null && f.multiple), u = [];
   for (const d of e) {
-    const v = s && !Array.isArray(d[o]) ? [d[o]] : d[o];
-    (s || Array.isArray(v) ? v.includes(t[o]) : v === t[o]) && u.push({
+    const _ = s && !Array.isArray(d[o]) ? [d[o]] : d[o];
+    (s || Array.isArray(_) ? _.includes(t[o]) : _ === t[o]) && u.push({
       ...d,
       color: d.color || t[n.colorField || ""]
     });
@@ -103,7 +103,7 @@ const Rn = (e) => {
     const d = ke(e[f], n);
     let p = d.allDay || le(d.start, d.end) > 0;
     if (p && (o ? p = t.some(
-      (v) => oe(v, {
+      (_) => oe(_, {
         start: J(d.start),
         end: Q(d.end)
       })
@@ -112,13 +112,13 @@ const Rn = (e) => {
       end: Q(d.end)
     }), p))
       if (a.push(d), o)
-        for (const v of t) {
-          const m = R(v, "yyyy-MM-dd");
-          oe(v, { start: J(d.start), end: Q(d.end) }) && (s[m] = (s[m] || []).concat(d));
+        for (const _ of t) {
+          const m = R(_, "yyyy-MM-dd");
+          oe(_, { start: J(d.start), end: Q(d.end) }) && (s[m] = (s[m] || []).concat(d));
         }
       else {
-        const v = R(d.start, "yyyy-MM-dd");
-        s[v] = (s[v] || []).concat(d);
+        const _ = R(d.start, "yyyy-MM-dd");
+        s[_] = (s[_] || []).concat(d);
       }
   }
   return o && i ? ((u = Object.values(s).sort((f, d) => d.length - f.length)) == null ? void 0 : u[0]) || [] : a;
@@ -228,13 +228,14 @@ const On = {
     direction: u,
     dialogMaxWidth: f,
     hourFormat: d,
-    ...p
-  } = e, v = Vn(e), m = i || "week", g = v[m] ? m : Rn(v);
+    selectedTab: p,
+    ..._
+  } = e, m = Vn(e), g = i || "week", h = m[g] ? g : Rn(m);
   return {
-    ...v,
+    ...m,
     translations: Ln(t),
     resourceFields: Object.assign(Hn, n),
-    view: g,
+    view: h,
     selectedDate: pe(a || /* @__PURE__ */ new Date(), e.timeZone),
     height: 600,
     navigation: !0,
@@ -261,7 +262,8 @@ const On = {
     isCellDisabled: void 0,
     disabledCellLabel: "Not available",
     availableCellLabel: "Available",
-    ...p
+    selectedTab: p,
+    ..._
   };
 }, Mt = {
   ...Et({}),
@@ -271,6 +273,7 @@ const On = {
   selectedRange: void 0,
   selectedEvent: void 0,
   selectedResource: void 0,
+  selectedTab: void 0,
   handleState: () => {
   },
   getViews: () => [],
@@ -476,12 +479,12 @@ const jn = bn("div")(({ theme: e }) => ({
     component: /* @__PURE__ */ r(Z, { children: e(d) })
   })), u = (d) => {
     if (o(d, "selectedTab"), typeof a == "function") {
-      const p = t.find((v) => v[n.idField] === d);
+      const p = t.find((_) => _[n.idField] === d);
       p && a(p);
     }
   }, f = j(() => {
     const d = t[0][n.idField];
-    return !i || t.findIndex((v) => v[n.idField] === i) < 0 ? d : i;
+    return !i || t.findIndex((_) => _[n.idField] === i) < 0 ? d : i;
   }, [t, n.idField, i]);
   return /* @__PURE__ */ r(Un, { tabs: s, tab: f, setTab: u, style: { display: "grid" } });
 }, qn = ie("div")(({ theme: e, dialog: t }) => ({
@@ -746,27 +749,27 @@ const jn = bn("div")(({ theme: e }) => ({
     customViewer: f,
     viewerExtraComponent: d,
     fields: p,
-    resources: v,
+    resources: _,
     resourceFields: m,
     locale: g,
     viewerTitleComponent: h,
     hourFormat: c,
     translations: x,
     onEventEdit: l
-  } = N(), _ = Y(), E = le(t.start, t.end) <= 0 && t.allDay, k = ye(c), w = m.idField, C = v.filter(
+  } = N(), b = Y(), E = le(t.start, t.end) <= 0 && t.allDay, k = ye(c), w = m.idField, C = _.filter(
     (T) => Array.isArray(t[w]) ? t[w].includes(T[w]) : T[w] === t[w]
   ), D = async () => {
     try {
       u(!0);
       let T = t.event_id;
       if (o) {
-        const b = await o(T);
-        b ? T = b : T = "";
+        const v = await o(T);
+        v ? T = v : T = "";
       }
       if (T) {
         n();
-        const b = a.filter((y) => y.event_id !== T);
-        s(b, "events");
+        const v = a.filter((y) => y.event_id !== T);
+        s(v, "events");
       }
     } catch (T) {
       console.error(T);
@@ -798,8 +801,8 @@ const jn = bn("div")(({ theme: e }) => ({
           we,
           {
             sx: {
-              bgcolor: t.color || _.palette.primary.main,
-              color: _.palette.primary.contrastText
+              bgcolor: t.color || b.palette.primary.main,
+              color: b.palette.primary.contrastText
             },
             children: [
               /* @__PURE__ */ S("div", { className: "rs__popper_actions", children: [
@@ -865,7 +868,7 @@ const jn = bn("div")(({ theme: e }) => ({
     }
   );
 }, je = ({ day: e, events: t }) => {
-  const [n, i] = z(null), [o, a] = z(), [s, u] = z(!1), { locale: f, hourFormat: d, eventRenderer: p, onEventClick: v, timeZone: m, disableViewer: g } = N(), h = Y(), c = ye(d), x = (l) => {
+  const [n, i] = z(null), [o, a] = z(), [s, u] = z(!1), { locale: f, hourFormat: d, eventRenderer: p, onEventClick: _, timeZone: m, disableViewer: g } = N(), h = Y(), c = ye(d), x = (l) => {
     !(l != null && l.currentTarget) && s && u(!1), i((l == null ? void 0 : l.currentTarget) || null);
   };
   return /* @__PURE__ */ S(K, { children: [
@@ -892,7 +895,7 @@ const jn = bn("div")(({ theme: e }) => ({
           tabIndex: g ? -1 : 0,
           disabled: l.disabled,
           onClick: (T) => {
-            T.preventDefault(), T.stopPropagation(), g || x(T), a(l), typeof v == "function" && v(l);
+            T.preventDefault(), T.stopPropagation(), g || x(T), a(l), typeof _ == "function" && _(l);
           },
           children: [
             /* @__PURE__ */ r(vt, { children: /* @__PURE__ */ r(
@@ -937,8 +940,8 @@ const jn = bn("div")(({ theme: e }) => ({
     }
   );
 }, tr = ({ daysList: e, resource: t, events: n }) => {
-  const { week: i, handleGotoDay: o, locale: a, timeZone: s, translations: u, alwaysShowAgendaDays: f } = N(), { disableGoToDay: d, headRenderer: p } = i, v = j(() => e.some((m) => Te(n, m).length > 0), [e, n]);
-  return !f && !v ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Me, { children: e.map((m, g) => {
+  const { week: i, handleGotoDay: o, locale: a, timeZone: s, translations: u, alwaysShowAgendaDays: f } = N(), { disableGoToDay: d, headRenderer: p } = i, _ = j(() => e.some((m) => Te(n, m).length > 0), [e, n]);
+  return !f && !_ ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Me, { children: e.map((m, g) => {
     const h = se({ dateLeft: m, timeZone: s }), c = Te(n, m);
     return !f && !c.length ? null : /* @__PURE__ */ S("div", { className: `rs__agenda_row ${he(m) ? "rs__today_cell" : ""}`, children: [
       /* @__PURE__ */ r("div", { className: "rs__cell rs__agenda__cell", children: typeof p == "function" ? /* @__PURE__ */ r("div", { children: p({ day: m, events: n, resource: t }) }) : /* @__PURE__ */ r(
@@ -1019,9 +1022,9 @@ const jn = bn("div")(({ theme: e }) => ({
     }
   };
 }, Ie = ({ event: e, multiday: t, hasPrev: n, hasNext: i, showdate: o = !0 }) => {
-  const { direction: a, locale: s, hourFormat: u, eventRenderer: f, onEventClick: d, view: p, disableViewer: v } = N(), m = rr(e), [g, h] = z(null), [c, x] = z(!1), l = Y(), _ = ye(u), E = a === "rtl" ? nt : tt, k = a === "rtl" ? tt : nt, w = le(e.start, e.end) <= 0 && e.allDay, { canDrag: C } = Ft(e), D = U(
-    (b) => {
-      !(b != null && b.currentTarget) && c && x(!1), h((b == null ? void 0 : b.currentTarget) || null);
+  const { direction: a, locale: s, hourFormat: u, eventRenderer: f, onEventClick: d, view: p, disableViewer: _ } = N(), m = rr(e), [g, h] = z(null), [c, x] = z(!1), l = Y(), b = ye(u), E = a === "rtl" ? nt : tt, k = a === "rtl" ? tt : nt, w = le(e.start, e.end) <= 0 && e.allDay, { canDrag: C } = Ft(e), D = U(
+    (v) => {
+      !(v != null && v.currentTarget) && c && x(!1), h((v == null ? void 0 : v.currentTarget) || null);
     },
     [c]
   ), T = j(() => {
@@ -1030,15 +1033,15 @@ const jn = bn("div")(({ theme: e }) => ({
       if (M)
         return /* @__PURE__ */ r(ot, { children: M }, `${e.start.getTime()}_${e.end.getTime()}_${e.event_id}`);
     }
-    const b = be(e.end, e.start);
+    const v = be(e.end, e.start);
     let y;
-    return b < 30 ? y = /* @__PURE__ */ r("div", { style: { padding: "2px 6px" }, children: /* @__PURE__ */ r($, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: e.title }) }) : b === 30 ? y = /* @__PURE__ */ r("div", { style: { padding: "2px 6px" }, children: /* @__PURE__ */ S($, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: [
+    return v < 30 ? y = /* @__PURE__ */ r("div", { style: { padding: "2px 6px" }, children: /* @__PURE__ */ r($, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: e.title }) }) : v === 30 ? y = /* @__PURE__ */ r("div", { style: { padding: "2px 6px" }, children: /* @__PURE__ */ S($, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: [
       e.title,
       ", ",
-      R(e.start, _, { locale: s })
+      R(e.start, b, { locale: s })
     ] }) }) : y = /* @__PURE__ */ S("div", { style: { padding: "2px 6px" }, children: [
       /* @__PURE__ */ r($, { variant: "subtitle2", style: { fontSize: 12 }, noWrap: !0, children: e.title }),
-      o && /* @__PURE__ */ r($, { style: { fontSize: 11 }, noWrap: !0, children: `${R(e.start, _, { locale: s })} - ${R(e.end, _, { locale: s })}` }),
+      o && /* @__PURE__ */ r($, { style: { fontSize: 11 }, noWrap: !0, children: `${R(e.start, b, { locale: s })} - ${R(e.end, b, { locale: s })}` }),
       e.subtitle && /* @__PURE__ */ r($, { variant: "body2", style: { fontSize: 11 }, noWrap: !0, children: e.subtitle })
     ] }), t && (y = /* @__PURE__ */ S(
       "div",
@@ -1050,9 +1053,9 @@ const jn = bn("div")(({ theme: e }) => ({
           justifyContent: "space-between"
         },
         children: [
-          /* @__PURE__ */ r($, { sx: { fontSize: 11 }, noWrap: !0, children: n ? /* @__PURE__ */ r(k, { fontSize: "small", sx: { display: "flex" } }) : o && !w && R(e.start, _, { locale: s }) }),
+          /* @__PURE__ */ r($, { sx: { fontSize: 11 }, noWrap: !0, children: n ? /* @__PURE__ */ r(k, { fontSize: "small", sx: { display: "flex" } }) : o && !w && R(e.start, b, { locale: s }) }),
           /* @__PURE__ */ r($, { variant: "subtitle2", align: "center", sx: { fontSize: 12 }, noWrap: !0, children: e.title }),
-          /* @__PURE__ */ r($, { sx: { fontSize: 11 }, noWrap: !0, children: i ? /* @__PURE__ */ r(E, { fontSize: "small", sx: { display: "flex" } }) : o && !w && R(e.end, _, { locale: s }) })
+          /* @__PURE__ */ r($, { sx: { fontSize: 11 }, noWrap: !0, children: i ? /* @__PURE__ */ r(E, { fontSize: "small", sx: { display: "flex" } }) : o && !w && R(e.end, b, { locale: s }) })
         ]
       }
     )), /* @__PURE__ */ r(
@@ -1068,11 +1071,11 @@ const jn = bn("div")(({ theme: e }) => ({
           on,
           {
             onClick: (M) => {
-              M.preventDefault(), M.stopPropagation(), v || D(M), typeof d == "function" && d(e);
+              M.preventDefault(), M.stopPropagation(), _ || D(M), typeof d == "function" && d(e);
             },
             focusRipple: !0,
-            tabIndex: v ? -1 : 0,
-            disableRipple: v,
+            tabIndex: _ ? -1 : 0,
+            disableRipple: _,
             disabled: e.disabled,
             children: /* @__PURE__ */ r("div", { ...m, draggable: C, children: y })
           }
@@ -1086,11 +1089,11 @@ const jn = bn("div")(({ theme: e }) => ({
     p,
     e,
     o,
-    _,
+    b,
     s,
     l.palette.primary.main,
     l.palette.primary.contrastText,
-    v,
+    _,
     m,
     C,
     D,
@@ -1144,7 +1147,7 @@ const or = (e) => {
       }
     ),
     e.map((d, p) => {
-      const v = (i * 60 - n * 60) * a, m = be(d.end, d.start) * a, g = Math.min(m, v) - He, h = n * 60, c = d.start.getHours() * 60 + d.start.getMinutes(), x = Math.max(c - h, 0), l = x * a, E = g / 60 * He, k = x / o, w = l + k, C = $n(e, d), D = C.filter((T) => f.includes(T.event_id));
+      const _ = (i * 60 - n * 60) * a, m = be(d.end, d.start) * a, g = Math.min(m, _) - He, h = n * 60, c = d.start.getHours() * 60 + d.start.getMinutes(), x = Math.max(c - h, 0), l = x * a, E = g / 60 * He, k = x / o, w = l + k, C = $n(e, d), D = C.filter((T) => f.includes(T.event_id));
       return f.push(d.event_id), /* @__PURE__ */ r(
         "div",
         {
@@ -1172,10 +1175,10 @@ const or = (e) => {
     setCurrentDragged: f,
     editable: d,
     timeZone: p,
-    isCellDisabled: v,
+    isCellDisabled: _,
     disabledCellLabel: m,
     availableCellLabel: g
-  } = N(), h = Y(), c = j(() => v && typeof v == "function" ? v(e, t, n, i) : !1, [v, e, t, n, i]), x = d && !c;
+  } = N(), h = Y(), c = j(() => _ && typeof _ == "function" ? _(e, t, n, i) : !1, [_, e, t, n, i]), x = d && !c;
   return {
     tabIndex: x ? 0 : -1,
     disableRipple: !x,
@@ -1207,8 +1210,8 @@ const or = (e) => {
     onDrop: (l) => {
       if (!c && u && u.event_id) {
         l.preventDefault(), l.currentTarget.style.backgroundColor = "";
-        const _ = ze(e, p);
-        s(l, u.event_id.toString(), _, n, i), f();
+        const b = ze(e, p);
+        s(l, u.event_id.toString(), b, n, i), f();
       }
     },
     [n]: i
@@ -1256,14 +1259,14 @@ const or = (e) => {
     handleGotoDay: f,
     resources: d,
     resourceFields: p,
-    resourceViewMode: v,
+    resourceViewMode: _,
     direction: m,
     locale: g,
     hourFormat: h,
     timeZone: c,
     stickyNavigation: x
-  } = N(), { startHour: l, endHour: _, step: E, cellRenderer: k, disableGoToDay: w, headRenderer: C, hourRenderer: D } = s, { renderedSlots: T } = Wt(), { headersRef: b, bodyRef: y } = Nt(), M = ce, I = J(e[0]), P = Q(e[e.length - 1]), H = ye(h), V = j(() => {
-    const A = d.length && v === "default", F = Ce(
+  } = N(), { startHour: l, endHour: b, step: E, cellRenderer: k, disableGoToDay: w, headRenderer: C, hourRenderer: D } = s, { renderedSlots: T } = Wt(), { headersRef: v, bodyRef: y } = Nt(), M = ce, I = J(e[0]), P = Q(e[e.length - 1]), H = ye(h), V = j(() => {
+    const A = d.length && _ === "default", F = Ce(
       A ? u : o,
       e,
       c,
@@ -1274,7 +1277,7 @@ const or = (e) => {
     M,
     e,
     u,
-    v,
+    _,
     o,
     d.length,
     c
@@ -1303,7 +1306,7 @@ const or = (e) => {
       ge,
       {
         days: e.length,
-        ref: b,
+        ref: v,
         sticky: "1",
         stickyNavigation: x,
         children: [
@@ -1342,7 +1345,7 @@ const or = (e) => {
               today: B,
               minuteHeight: i,
               startHour: l,
-              endHour: _,
+              endHour: b,
               step: E,
               direction: m,
               timeZone: c
@@ -1377,17 +1380,17 @@ const or = (e) => {
     resourceFields: f,
     fields: d,
     agenda: p
-  } = N(), { weekStartOn: v, weekDays: m, startHour: g, endHour: h, step: c } = e, x = Se(t, { weekStartsOn: v }), l = m.map((M) => q(x, M)), _ = J(l[0]), E = Q(l[l.length - 1]), k = ve(t, { hours: g, minutes: 0, seconds: 0 }), w = ve(t, { hours: h, minutes: -c, seconds: 0 }), C = pt(
+  } = N(), { weekStartOn: _, weekDays: m, startHour: g, endHour: h, step: c } = e, x = Se(t, { weekStartsOn: _ }), l = m.map((M) => q(x, M)), b = J(l[0]), E = Q(l[l.length - 1]), k = ve(t, { hours: g, minutes: 0, seconds: 0 }), w = ve(t, { hours: h, minutes: -c, seconds: 0 }), C = pt(
     {
       start: k,
       end: w
     },
     { step: c }
-  ), D = Tt(n, C.length), T = Dt(D, c), b = U(async () => {
+  ), D = Tt(n, C.length), T = Dt(D, c), v = U(async () => {
     try {
       a(!0);
       const M = await o({
-        start: _,
+        start: b,
         end: E,
         view: "week"
       });
@@ -1399,8 +1402,8 @@ const or = (e) => {
     }
   }, [o]);
   ee(() => {
-    o instanceof Function && b();
-  }, [b, o]);
+    o instanceof Function && v();
+  }, [v, o]);
   const y = (M) => {
     let I = i;
     return M && (I = xe(i, M, f, d)), p ? /* @__PURE__ */ r(tr, { daysList: l, resource: M, events: I }) : /* @__PURE__ */ r(
@@ -1438,7 +1441,7 @@ const or = (e) => {
   const { selectedDate: e, week: t, navigationPickerProps: n, view: i } = N(), o = n == null ? void 0 : n.minDate, a = n == null ? void 0 : n.maxDate, s = i === "month" ? gt(e) : i === "week" ? mt(e, { weekStartsOn: t == null ? void 0 : t.weekStartOn }) : e, u = i === "month" ? Le(e) : i === "week" ? Se(e, { weekStartsOn: t == null ? void 0 : t.weekStartOn }) : e, f = o ? u <= o : !1, d = a ? s >= a : !1;
   return { prevDisabled: f, nextDisabled: d };
 }, sr = ({ selectedDate: e, onChange: t, weekProps: n }) => {
-  const { locale: i, navigationPickerProps: o } = N(), [a, s] = z(null), { weekStartOn: u } = n, f = Se(e, { weekStartsOn: u }), d = mt(e, { weekStartsOn: u }), { prevDisabled: p, nextDisabled: v } = qe(), m = (l) => {
+  const { locale: i, navigationPickerProps: o } = N(), [a, s] = z(null), { weekStartOn: u } = n, f = Se(e, { weekStartsOn: u }), d = mt(e, { weekStartsOn: u }), { prevDisabled: p, nextDisabled: _ } = qe(), m = (l) => {
     s(l.currentTarget);
   }, g = () => {
     s(null);
@@ -1491,7 +1494,7 @@ const or = (e) => {
       {
         type: "next",
         onClick: x,
-        disabled: v,
+        disabled: _,
         "aria-label": "next week"
       }
     )
@@ -1503,7 +1506,7 @@ const or = (e) => {
     a(null);
   }, p = (g) => {
     t(g || /* @__PURE__ */ new Date()), d();
-  }, v = () => {
+  }, _ = () => {
     const g = q(e, -1);
     t(g);
   }, m = () => {
@@ -1515,7 +1518,7 @@ const or = (e) => {
       me,
       {
         type: "prev",
-        onClick: v,
+        onClick: _,
         disabled: s,
         "aria-label": "previous day"
       }
@@ -1550,7 +1553,7 @@ const or = (e) => {
     s(h.currentTarget);
   }, p = () => {
     s(null);
-  }, v = (h) => {
+  }, _ = (h) => {
     t(h || /* @__PURE__ */ new Date()), p();
   }, m = () => {
     const h = o - 1;
@@ -1587,7 +1590,7 @@ const or = (e) => {
             openTo: "month",
             views: ["year", "month"],
             value: e,
-            onChange: v
+            onChange: _
           }
         ) })
       }
@@ -1615,19 +1618,19 @@ const or = (e) => {
     month: f,
     disableViewNavigator: d,
     onSelectedDateChange: p,
-    onViewChange: v,
+    onViewChange: _,
     stickyNavigation: m,
     timeZone: g,
     agenda: h,
     toggleAgenda: c,
     enableAgenda: x
-  } = N(), [l, _] = z(null), E = Y(), k = xt(E.breakpoints.up("sm")), w = o(), C = (y) => {
-    _(y || null);
+  } = N(), [l, b] = z(null), E = Y(), k = xt(E.breakpoints.up("sm")), w = o(), C = (y) => {
+    b(y || null);
   }, D = (y) => {
     i(y, "selectedDate"), p && typeof p == "function" && p(y);
   }, T = (y) => {
-    i(y, "view"), v && typeof v == "function" && v(y, h);
-  }, b = () => {
+    i(y, "view"), _ && typeof _ == "function" && _(y, h);
+  }, v = () => {
     switch (t) {
       case "month":
         return (f == null ? void 0 : f.navigation) && /* @__PURE__ */ r(cr, { selectedDate: e, onChange: D });
@@ -1647,7 +1650,7 @@ const or = (e) => {
     }
   };
   return !s && d ? null : /* @__PURE__ */ S(Yn, { sticky: m ? "1" : "0", children: [
-    /* @__PURE__ */ r("div", { "data-testid": "date-navigator", children: s && b() }),
+    /* @__PURE__ */ r("div", { "data-testid": "date-navigator", children: s && v() }),
     /* @__PURE__ */ S(
       "div",
       {
@@ -1790,14 +1793,14 @@ const or = (e) => {
   required: d
 }) => {
   var x, l;
-  const { translations: p } = N(), [v, m] = z({
+  const { translations: p } = N(), [_, m] = z({
     touched: !1,
     valid: !!t,
     errorMsg: u || (d ? ((x = p == null ? void 0 : p.validation) == null ? void 0 : x.required) || "Required" : void 0)
-  }), g = e === "date" ? Mn : In, h = v.touched && (s || !v.valid), c = U(
-    (_) => {
+  }), g = e === "date" ? Mn : In, h = _.touched && (s || !_.valid), c = U(
+    (b) => {
       var D;
-      const E = !isNaN(Date.parse(_)), k = typeof _ == "string" && E ? new Date(_) : _;
+      const E = !isNaN(Date.parse(b)), k = typeof b == "string" && E ? new Date(b) : b;
       let w = !0, C = u;
       d && !k && (w = !1, C = u || ((D = p == null ? void 0 : p.validation) == null ? void 0 : D.required) || "Required"), m((T) => ({ ...T, touched: !0, valid: w, errorMsg: C })), o(i, k);
     },
@@ -1810,14 +1813,14 @@ const or = (e) => {
     {
       value: t instanceof Date ? t : new Date(t),
       label: n,
-      onChange: (_) => {
-        c(_);
+      onChange: (b) => {
+        c(b);
       },
       minutesStep: 5,
       slotProps: {
         textField: {
           variant: a,
-          helperText: h && v.errorMsg,
+          helperText: h && _.errorMsg,
           error: h,
           fullWidth: !0
         }
@@ -1836,7 +1839,7 @@ const or = (e) => {
   email: f,
   decimal: d,
   onChange: p,
-  disabled: v,
+  disabled: _,
   multiline: m,
   rows: g,
   touched: h
@@ -1845,26 +1848,26 @@ const or = (e) => {
     touched: !1,
     valid: !1,
     errorMsg: ""
-  }), { translations: l } = N(), _ = U(
+  }), { translations: l } = N(), b = U(
     (E) => {
-      var D, T, b, y, M, I, P, H, V;
+      var D, T, v, y, M, I, P, H, V;
       const k = E;
       let w = !0, C = "";
-      f && (w = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(k) && w, C = ((D = l == null ? void 0 : l.validation) == null ? void 0 : D.invalidEmail) || "Invalid Email"), d && (w = /^[0-9]+(\.[0-9]*)?$/.test(k) && w, C = ((T = l == null ? void 0 : l.validation) == null ? void 0 : T.onlyNumbers) || "Only Numbers Allowed"), s && `${k}`.trim().length < s && (w = !1, C = typeof ((b = l == null ? void 0 : l.validation) == null ? void 0 : b.min) == "function" ? (y = l == null ? void 0 : l.validation) == null ? void 0 : y.min(s) : ((M = l == null ? void 0 : l.validation) == null ? void 0 : M.min) || `Minimum ${s} letters`), u && `${k}`.trim().length > u && (w = !1, C = typeof ((I = l == null ? void 0 : l.validation) == null ? void 0 : I.max) == "function" ? (P = l == null ? void 0 : l.validation) == null ? void 0 : P.max(u) : ((H = l == null ? void 0 : l.validation) == null ? void 0 : H.max) || `Maximum ${u} letters`), a && `${k}`.trim().length <= 0 && (w = !1, C = ((V = l == null ? void 0 : l.validation) == null ? void 0 : V.required) || "Required"), x({ touched: !0, valid: w, errorMsg: C }), p(o, k, w);
+      f && (w = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(k) && w, C = ((D = l == null ? void 0 : l.validation) == null ? void 0 : D.invalidEmail) || "Invalid Email"), d && (w = /^[0-9]+(\.[0-9]*)?$/.test(k) && w, C = ((T = l == null ? void 0 : l.validation) == null ? void 0 : T.onlyNumbers) || "Only Numbers Allowed"), s && `${k}`.trim().length < s && (w = !1, C = typeof ((v = l == null ? void 0 : l.validation) == null ? void 0 : v.min) == "function" ? (y = l == null ? void 0 : l.validation) == null ? void 0 : y.min(s) : ((M = l == null ? void 0 : l.validation) == null ? void 0 : M.min) || `Minimum ${s} letters`), u && `${k}`.trim().length > u && (w = !1, C = typeof ((I = l == null ? void 0 : l.validation) == null ? void 0 : I.max) == "function" ? (P = l == null ? void 0 : l.validation) == null ? void 0 : P.max(u) : ((H = l == null ? void 0 : l.validation) == null ? void 0 : H.max) || `Maximum ${u} letters`), a && `${k}`.trim().length <= 0 && (w = !1, C = ((V = l == null ? void 0 : l.validation) == null ? void 0 : V.required) || "Required"), x({ touched: !0, valid: w, errorMsg: C }), p(o, k, w);
     },
     [d, f, u, s, o, p, a, l == null ? void 0 : l.validation]
   );
   return ee(() => {
-    h && _(i);
-  }, [_, h, i]), /* @__PURE__ */ r(
+    h && b(i);
+  }, [b, h, i]), /* @__PURE__ */ r(
     ln,
     {
       variant: e,
       label: t && /* @__PURE__ */ r($, { variant: "body2", children: `${t} ${a ? "*" : ""}` }),
       value: i,
       name: o,
-      onChange: (E) => _(E.target.value),
-      disabled: v,
+      onChange: (E) => b(E.target.value),
+      disabled: _,
       error: c.touched && !c.valid,
       helperText: c.touched && !c.valid && c.errorMsg,
       multiline: m,
@@ -1887,7 +1890,7 @@ const or = (e) => {
   variant: f = "outlined",
   loading: d,
   multiple: p,
-  placeholder: v,
+  placeholder: _,
   errMsg: m
 }) => {
   var E, k;
@@ -1897,18 +1900,18 @@ const or = (e) => {
     errorMsg: m || (i ? ((E = h == null ? void 0 : h.validation) == null ? void 0 : E.required) || "Required" : void 0)
   }), l = U(() => {
     c.touched || x((w) => ({ ...w, touched: !0, errorMsg: m || w.errorMsg }));
-  }, [m, c.touched]), _ = U(
+  }, [m, c.touched]), b = U(
     (w) => {
-      var b;
+      var v;
       const C = w;
       let D = !0, T = m;
-      i && (p ? !C.length : !C) && (D = !1, T = m || ((b = h == null ? void 0 : h.validation) == null ? void 0 : b.required) || "Required"), x((y) => ({ ...y, touched: !0, valid: D, errorMsg: T })), o(n, C, D);
+      i && (p ? !C.length : !C) && (D = !1, T = m || ((v = h == null ? void 0 : h.validation) == null ? void 0 : v.required) || "Required"), x((y) => ({ ...y, touched: !0, valid: D, errorMsg: T })), o(n, C, D);
     },
     [m, p, n, o, i, (k = h == null ? void 0 : h.validation) == null ? void 0 : k.required]
   );
   return ee(() => {
-    u && _(t);
-  }, [_, u, t]), /* @__PURE__ */ S(Z, { children: [
+    u && b(t);
+  }, [b, u, t]), /* @__PURE__ */ S(Z, { children: [
     /* @__PURE__ */ S(
       sn,
       {
@@ -1925,7 +1928,7 @@ const or = (e) => {
               labelId: `input_${n}`,
               value: t,
               onBlur: l,
-              onChange: (w) => _(w.target.value),
+              onChange: (w) => b(w.target.value),
               IconComponent: d ? () => /* @__PURE__ */ r(wt, { size: 5 }) : Fn,
               multiple: !!p,
               classes: {
@@ -1946,7 +1949,7 @@ const or = (e) => {
                 }
               },
               children: [
-                v && /* @__PURE__ */ r(We, { value: "", children: /* @__PURE__ */ r("em", { children: v }) }),
+                _ && /* @__PURE__ */ r(We, { value: "", children: /* @__PURE__ */ r("em", { children: _ }) }),
                 e.map((w) => /* @__PURE__ */ S(We, { value: w.value, children: [
                   p && /* @__PURE__ */ r(un, { checked: t.indexOf(w.value) > -1, color: "primary" }),
                   w.text
@@ -2016,44 +2019,44 @@ const or = (e) => {
     onConfirm: f,
     customEditor: d,
     confirmEvent: p,
-    dialogMaxWidth: v,
+    dialogMaxWidth: _,
     translations: m,
     timeZone: g
-  } = N(), [h, c] = z(at(e, o || i)), [x, l] = z(!1), _ = Y(), E = xt(_.breakpoints.down("sm")), k = (b, y, M) => {
+  } = N(), [h, c] = z(at(e, o || i)), [x, l] = z(!1), b = Y(), E = xt(b.breakpoints.down("sm")), k = (v, y, M) => {
     c((I) => ({
       ...I,
-      [b]: { ...I[b], value: y, validity: M }
+      [v]: { ...I[v], value: y, validity: M }
     }));
-  }, w = (b) => {
-    b && c(at(e)), n(!1);
+  }, w = (v) => {
+    v && c(at(e)), n(!1);
   }, C = async () => {
-    let b = {};
+    let v = {};
     for (const y in h)
-      if (b[y] = h[y].value, !d && !h[y].validity)
+      if (v[y] = h[y].value, !d && !h[y].validity)
         return l(!0);
     try {
-      u(!0), b.end = b.start >= b.end ? ae(b.start, be(i == null ? void 0 : i.end, i == null ? void 0 : i.start)) : b.end;
+      u(!0), v.end = v.start >= v.end ? ae(v.start, be(i == null ? void 0 : i.end, i == null ? void 0 : i.start)) : v.end;
       const y = o != null && o.event_id ? "edit" : "create";
-      f ? b = await f(b, y) : b.event_id = (o == null ? void 0 : o.event_id) || Date.now().toString(36) + Math.random().toString(36).slice(2), b.start = ze(b.start, g), b.end = ze(b.end, g), p(b, y), w(!0);
+      f ? v = await f(v, y) : v.event_id = (o == null ? void 0 : o.event_id) || Date.now().toString(36) + Math.random().toString(36).slice(2), v.start = ze(v.start, g), v.end = ze(v.end, g), p(v, y), w(!0);
     } catch (y) {
       console.error(y);
     } finally {
       u(!1);
     }
-  }, D = (b) => {
+  }, D = (v) => {
     var M, I, P;
-    const y = h[b];
+    const y = h[v];
     switch (y.type) {
       case "input":
         return /* @__PURE__ */ r(
           fr,
           {
             value: y.value,
-            name: b,
+            name: v,
             onChange: k,
             touched: x,
             ...y.config,
-            label: m.event[b] || ((M = y.config) == null ? void 0 : M.label)
+            label: m.event[v] || ((M = y.config) == null ? void 0 : M.label)
           }
         );
       case "date":
@@ -2061,25 +2064,25 @@ const or = (e) => {
           hr,
           {
             value: y.value,
-            name: b,
+            name: v,
             onChange: (...V) => k(...V, !0),
             touched: x,
             ...y.config,
-            label: m.event[b] || ((I = y.config) == null ? void 0 : I.label)
+            label: m.event[v] || ((I = y.config) == null ? void 0 : I.label)
           }
         );
       case "select":
-        const H = e.find((V) => V.name === b);
+        const H = e.find((V) => V.name === v);
         return /* @__PURE__ */ r(
           pr,
           {
             value: y.value,
-            name: b,
+            name: v,
             options: (H == null ? void 0 : H.options) || [],
             onChange: k,
             touched: x,
             ...y.config,
-            label: m.event[b] || ((P = y.config) == null ? void 0 : P.label)
+            label: m.event[v] || ((P = y.config) == null ? void 0 : P.label)
           }
         );
       default:
@@ -2091,13 +2094,13 @@ const or = (e) => {
     {
       open: t,
       fullScreen: E,
-      maxWidth: v,
+      maxWidth: _,
       onClose: () => {
         n(!1);
       },
       children: (() => {
         if (d) {
-          const b = {
+          const v = {
             state: h,
             close: () => n(!1),
             loading: (y) => u(y),
@@ -2105,14 +2108,14 @@ const or = (e) => {
             onConfirm: p,
             [a.idField]: s
           };
-          return d(b);
+          return d(v);
         }
         return /* @__PURE__ */ S(K, { children: [
           /* @__PURE__ */ r(gn, { children: o ? m.form.editTitle : m.form.addTitle }),
-          /* @__PURE__ */ r(mn, { style: { overflowX: "hidden" }, children: /* @__PURE__ */ r(et, { container: !0, spacing: 2, children: Object.keys(h).map((b) => {
+          /* @__PURE__ */ r(mn, { style: { overflowX: "hidden" }, children: /* @__PURE__ */ r(et, { container: !0, spacing: 2, children: Object.keys(h).map((v) => {
             var M;
-            const y = h[b];
-            return /* @__PURE__ */ r(et, { size: { sm: (M = y.config) == null ? void 0 : M.sm, xs: 12 }, children: D(b) }, b);
+            const y = h[v];
+            return /* @__PURE__ */ r(et, { size: { sm: (M = y.config) == null ? void 0 : M.sm, xs: 12 }, children: D(v) }, v);
           }) }) }),
           /* @__PURE__ */ S(yn, { children: [
             /* @__PURE__ */ r(X, { color: "inherit", fullWidth: !0, onClick: () => w(), children: m.form.cancel }),
@@ -2131,7 +2134,7 @@ const or = (e) => {
     selectedDate: s,
     translations: u,
     alwaysShowAgendaDays: f
-  } = N(), { disableGoToDay: d, headRenderer: p } = n, v = Ut(s), m = Array.from({ length: v }, (h, c) => c + 1), g = j(() => e.filter((h) => yt(h.start, s)), [e, s]);
+  } = N(), { disableGoToDay: d, headRenderer: p } = n, _ = Ut(s), m = Array.from({ length: _ }, (h, c) => c + 1), g = j(() => e.filter((h) => yt(h.start, s)), [e, s]);
   return !f && !g.length ? /* @__PURE__ */ r(Ue, {}) : /* @__PURE__ */ r(Me, { children: m.map((h) => {
     const c = new Date(s.getFullYear(), s.getMonth(), h), x = se({ dateLeft: c, timeZone: a }), l = Te(e, c);
     return !f && !l.length ? null : /* @__PURE__ */ S("div", { className: `rs__agenda_row ${he(c) ? "rs__today_cell" : ""}`, children: [
@@ -2142,8 +2145,8 @@ const or = (e) => {
           color: x ? "primary" : "inherit",
           variant: "body2",
           className: d ? "" : "rs__hover__op",
-          onClick: (_) => {
-            _.stopPropagation(), d || i(c);
+          onClick: (b) => {
+            b.stopPropagation(), d || i(c);
           },
           children: R(c, "dd E", { locale: o })
         }
@@ -2161,25 +2164,25 @@ const or = (e) => {
   onViewMore: s,
   cellHeight: u
 }) => {
-  const f = Math.round((u - it) / ce - 1), { translations: d, month: p, locale: v, timeZone: m } = N(), { renderedSlots: g } = Wt(), h = j(() => {
+  const f = Math.round((u - it) / ce - 1), { translations: d, month: p, locale: _, timeZone: m } = N(), { renderedSlots: g } = Wt(), h = j(() => {
     var x;
     const c = [];
     for (let l = 0; l < Math.min(e.length, f + 1); l++) {
-      const _ = ke(e[l], m), E = !!o && De(_.start, o), k = E && o ? o : _.start;
-      let w = le(k, _.end) + 1;
-      const C = Zt(_.end, k, {
+      const b = ke(e[l], m), E = !!o && De(b.start, o), k = E && o ? o : b.start;
+      let w = le(k, b.end) + 1;
+      const C = Zt(b.end, k, {
         weekStartsOn: p == null ? void 0 : p.weekStartOn,
-        locale: v
+        locale: _
       }) > 0;
       if (C) {
-        const M = Se(_.start, {
+        const M = Se(b.start, {
           weekStartsOn: p == null ? void 0 : p.weekStartOn,
-          locale: v
+          locale: _
         }), I = qt(M, i);
-        I && (w = a.length - (o ? 0 : ht(_.start, I)));
+        I && (w = a.length - (o ? 0 : ht(b.start, I)));
       }
-      const D = R(n, "yyyy-MM-dd"), T = (x = g == null ? void 0 : g[t || "all"]) == null ? void 0 : x[D], b = (T == null ? void 0 : T[_.event_id]) || 0, y = Math.min(b, f) * ce + it;
-      if (b >= f) {
+      const D = R(n, "yyyy-MM-dd"), T = (x = g == null ? void 0 : g[t || "all"]) == null ? void 0 : x[D], v = (T == null ? void 0 : T[b.event_id]) || 0, y = Math.min(v, f) * ce + it;
+      if (v >= f) {
         c.push(
           /* @__PURE__ */ r(
             $,
@@ -2210,15 +2213,15 @@ const or = (e) => {
             children: /* @__PURE__ */ r(
               Ie,
               {
-                event: _,
+                event: b,
                 showdate: !1,
-                multiday: le(_.start, _.end) > 0,
+                multiday: le(b.start, b.end) > 0,
                 hasPrev: E,
                 hasNext: C
               }
             )
           },
-          `${_.event_id}_${l}`
+          `${b.event_id}_${l}`
         )
       );
     }
@@ -2230,7 +2233,7 @@ const or = (e) => {
     f,
     o,
     p == null ? void 0 : p.weekStartOn,
-    v,
+    _,
     n,
     i,
     a.length,
@@ -2249,18 +2252,18 @@ const or = (e) => {
     resourceFields: f,
     fields: d,
     locale: p,
-    hourFormat: v,
+    hourFormat: _,
     stickyNavigation: m,
     timeZone: g,
     onClickMore: h
-  } = N(), { weekDays: c, startHour: x, endHour: l, cellRenderer: _, headRenderer: E, disableGoToDay: k } = o, { headersRef: w, bodyRef: C } = Nt(), D = Y(), T = Le(a), b = ye(v), y = i / n.length, M = U(
+  } = N(), { weekDays: c, startHour: x, endHour: l, cellRenderer: b, headRenderer: E, disableGoToDay: k } = o, { headersRef: w, bodyRef: C } = Nt(), D = Y(), T = Le(a), v = ye(_), y = i / n.length, M = U(
     (I) => {
       let P = Ee(s);
       I && (P = xe(s, I, f, d));
       const H = [];
       for (const V of n) {
         const O = c.map((A) => {
-          const F = q(V, A), B = /* @__PURE__ */ new Date(`${R(Je(F, x), `yyyy/MM/dd ${b}`)}`), te = /* @__PURE__ */ new Date(`${R(Je(F, l), `yyyy/MM/dd ${b}`)}`), G = f.idField, ne = ue(V, F) ? F : null, W = P.flatMap((L) => Ct(L, F)).filter((L) => {
+          const F = q(V, A), B = /* @__PURE__ */ new Date(`${R(Je(F, x), `yyyy/MM/dd ${v}`)}`), te = /* @__PURE__ */ new Date(`${R(Je(F, l), `yyyy/MM/dd ${v}`)}`), G = f.idField, ne = ue(V, F) ? F : null, W = P.flatMap((L) => Ct(L, F)).filter((L) => {
             if (ue(L.start, F)) return !0;
             const Re = { start: J(L.start), end: Q(L.end) };
             return !!(ne && oe(ne, Re));
@@ -2275,7 +2278,7 @@ const or = (e) => {
                 height: y,
                 resourceKey: G,
                 resourceVal: I ? I[G] : null,
-                cellRenderer: _
+                cellRenderer: b
               }
             ),
             /* @__PURE__ */ S(K, { children: [
@@ -2328,14 +2331,14 @@ const or = (e) => {
     },
     [
       y,
-      _,
+      b,
       e,
       k,
       n,
       l,
       s,
       d,
-      b,
+      v,
       u,
       E,
       T,
@@ -2384,23 +2387,23 @@ const or = (e) => {
     resourceFields: u,
     fields: f,
     agenda: d
-  } = N(), { weekStartOn: p, weekDays: v } = e, m = Le(t), g = gt(t), h = Xt(
+  } = N(), { weekStartOn: p, weekDays: _ } = e, m = Le(t), g = gt(t), h = Xt(
     {
       start: m,
       end: g
     },
     { weekStartsOn: p }
-  ), c = v.map((_) => q(h[0], _)), x = U(async () => {
+  ), c = _.map((b) => q(h[0], b)), x = U(async () => {
     try {
       o(!0);
-      const _ = h[0], E = q(h[h.length - 1], c.length), k = await i({
-        start: _,
+      const b = h[0], E = q(h[h.length - 1], c.length), k = await i({
+        start: b,
         end: E,
         view: "month"
       });
       k && (k != null && k.length) && a(k, "events");
-    } catch (_) {
-      throw _;
+    } catch (b) {
+      throw b;
     } finally {
       o(!1);
     }
@@ -2409,12 +2412,12 @@ const or = (e) => {
     i instanceof Function && x();
   }, [x, i]);
   const l = U(
-    (_) => {
+    (b) => {
       if (d) {
         let E = Ee(n);
-        return _ && (E = xe(n, _, u, f)), /* @__PURE__ */ r(mr, { resource: _, events: E });
+        return b && (E = xe(n, b, u, f)), /* @__PURE__ */ r(mr, { resource: b, events: E });
       }
-      return /* @__PURE__ */ r(vr, { daysList: c, eachWeekStart: h, resource: _ });
+      return /* @__PURE__ */ r(vr, { daysList: c, eachWeekStart: h, resource: b });
     },
     [d, c, h, n, f, u]
   );
@@ -2438,19 +2441,19 @@ const or = (e) => {
     resourceFields: f,
     resourceViewMode: d,
     fields: p,
-    direction: v,
+    direction: _,
     locale: m,
     hourFormat: g,
     timeZone: h,
     stickyNavigation: c,
     agenda: x
-  } = N(), { startHour: l, endHour: _, step: E, cellRenderer: k, headRenderer: w, hourRenderer: C } = e, D = ve(t, { hours: l, minutes: 0, seconds: 0 }), T = ve(t, { hours: _, minutes: -E, seconds: 0 }), b = pt(
+  } = N(), { startHour: l, endHour: b, step: E, cellRenderer: k, headRenderer: w, hourRenderer: C } = e, D = ve(t, { hours: l, minutes: 0, seconds: 0 }), T = ve(t, { hours: b, minutes: -E, seconds: 0 }), v = pt(
     {
       start: D,
       end: T
     },
     { step: E }
-  ), y = Tt(i, b.length), M = Dt(y, E), I = ye(g), P = U(async () => {
+  ), y = Tt(i, v.length), M = Dt(y, E), I = ye(g), P = U(async () => {
     try {
       a(!0);
       const O = q(D, -1), A = q(T, 1), F = await o({
@@ -2521,7 +2524,7 @@ const or = (e) => {
             }
           )
         ] }),
-        /* @__PURE__ */ r(ge, { days: 1, children: b.map((G, ne) => {
+        /* @__PURE__ */ r(ge, { days: 1, children: v.map((G, ne) => {
           const W = /* @__PURE__ */ new Date(`${R(t, "yyyy/MM/dd")} ${R(G, I)}`), re = ae(W, E), L = f.idField;
           return /* @__PURE__ */ S(K, { children: [
             /* @__PURE__ */ r("span", { className: "rs__cell rs__header rs__time", style: { height: y }, children: typeof C == "function" ? /* @__PURE__ */ r("div", { children: C(R(G, I, { locale: m })) }) : /* @__PURE__ */ r($, { variant: "caption", children: R(G, I, { locale: m }) }) }),
@@ -2533,9 +2536,9 @@ const or = (e) => {
                   today: D,
                   minuteHeight: M,
                   startHour: l,
-                  endHour: _,
+                  endHour: b,
                   step: E,
-                  direction: v,
+                  direction: _,
                   timeZone: h
                 }
               ),
@@ -2562,14 +2565,14 @@ const or = (e) => {
       D,
       x,
       k,
-      v,
       _,
+      b,
       n,
       p,
       I,
       w,
       C,
-      b,
+      v,
       m,
       H,
       f,
@@ -2627,9 +2630,9 @@ const or = (e) => {
       )
     }));
   }, [t, o, i, n, a]);
-  const f = (d, p, v, m) => {
+  const f = (d, p, _, m) => {
     u((g) => {
-      var h, c, x, l, _;
+      var h, c, x, l, b;
       return {
         ...g,
         renderedSlots: {
@@ -2637,9 +2640,9 @@ const or = (e) => {
           [m || "all"]: {
             ...(h = g.renderedSlots) == null ? void 0 : h[m || "all"],
             [d]: (x = (c = g.renderedSlots) == null ? void 0 : c[m || "all"]) != null && x[d] ? {
-              ...(_ = (l = g.renderedSlots) == null ? void 0 : l[m || "all"]) == null ? void 0 : _[d],
-              [p]: v
-            } : { [p]: v }
+              ...(b = (l = g.renderedSlots) == null ? void 0 : l[m || "all"]) == null ? void 0 : b[d],
+              [p]: _
+            } : { [p]: _ }
           }
         }
       };
@@ -2656,7 +2659,7 @@ const or = (e) => {
     }
   );
 }, Dr = ut(function(t, n) {
-  const i = N(), { view: o, dialog: a, loading: s, loadingComponent: u, resourceViewMode: f, resources: d, translations: p } = i, v = j(() => {
+  const i = N(), { view: o, dialog: a, loading: s, loadingComponent: u, resourceViewMode: f, resources: d, translations: p } = i, _ = j(() => {
     switch (o) {
       case "month":
         return /* @__PURE__ */ r(br, {});
@@ -2695,7 +2698,7 @@ const or = (e) => {
               flexDirection: f === "vertical" ? "column" : void 0
             },
             "data-testid": "grid",
-            children: /* @__PURE__ */ r(wr, { children: v })
+            children: /* @__PURE__ */ r(wr, { children: _ })
           }
         ),
         a && /* @__PURE__ */ r(gr, {})
@@ -2743,31 +2746,31 @@ const or = (e) => {
   }, p = (g, h) => {
     let c;
     h === "edit" ? Array.isArray(g) ? c = n.events.map((x) => {
-      const l = g.find((_) => _.event_id === x.event_id);
+      const l = g.find((b) => b.event_id === x.event_id);
       return l ? { ...x, ...l } : x;
     }) : c = n.events.map(
       (x) => x.event_id === g.event_id ? { ...x, ...g } : x
     ) : c = n.events.concat(g), i((x) => ({ ...x, events: c }));
-  }, v = (g) => {
+  }, _ = (g) => {
     i((h) => ({ ...h, currentDragged: g }));
   }, m = async (g, h, c, x, l) => {
     var T;
-    const _ = n.events.find((b) => typeof b.event_id == "number" ? b.event_id === +h : b.event_id === h), E = n.fields.find((b) => b.name === x), k = !!((T = E == null ? void 0 : E.config) != null && T.multiple);
+    const b = n.events.find((v) => typeof v.event_id == "number" ? v.event_id === +h : v.event_id === h), E = n.fields.find((v) => v.name === x), k = !!((T = E == null ? void 0 : E.config) != null && T.multiple);
     let w = l;
     if (E) {
-      const b = _[x], y = Oe(E, b, _).value;
+      const v = b[x], y = Oe(E, v, b).value;
       if (k)
         if (y.includes(l)) {
-          if (Ke(_.start, c))
+          if (Ke(b.start, c))
             return;
           w = y;
         } else
           w = y.length > 1 ? [...y, l] : [l];
     }
-    if (Ke(_.start, c) && (!w || !k && w === _[x]))
+    if (Ke(b.start, c) && (!w || !k && w === b[x]))
       return;
-    const C = be(_.end, _.start), D = {
-      ..._,
+    const C = be(b.end, b.start), D = {
+      ...b,
       start: c,
       end: ae(c, C),
       recurring: void 0,
@@ -2777,8 +2780,8 @@ const or = (e) => {
       return p(D, "edit");
     try {
       f(!0);
-      const b = await n.onEventDrop(g, c, D, _);
-      b && p(b, "edit");
+      const v = await n.onEventDrop(g, c, D, b);
+      v && p(v, "edit");
     } finally {
       f(!1);
     }
@@ -2795,7 +2798,7 @@ const or = (e) => {
         triggerLoading: f,
         handleGotoDay: d,
         confirmEvent: p,
-        setCurrentDragged: v,
+        setCurrentDragged: _,
         onDrop: m
       },
       children: e

@@ -98,6 +98,7 @@ export const defaultProps = (props: Partial<SchedulerProps>) => {
     direction,
     dialogMaxWidth,
     hourFormat,
+    selectedTab,
     ...otherProps
   } = props;
 
@@ -135,6 +136,7 @@ export const defaultProps = (props: Partial<SchedulerProps>) => {
     isCellDisabled: undefined,
     disabledCellLabel: "Not available",
     availableCellLabel: "Available",
+    selectedTab: selectedTab,
     ...otherProps,
   };
 };
@@ -146,6 +148,7 @@ export const initialStore = {
   selectedRange: undefined,
   selectedEvent: undefined,
   selectedResource: undefined,
+  selectedTab: undefined,
   handleState: () => {},
   getViews: () => [],
   toggleAgenda: () => {},
